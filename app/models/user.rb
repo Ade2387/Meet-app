@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, :email, presence: true, uniqueness: true
   has_many :events, through: :user_events
-
+  has_many :events
 end
