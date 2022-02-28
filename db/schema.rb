@@ -10,24 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_144406) do
+ActiveRecord::Schema.define(version: 2022_02_28_150716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.text "description"
     t.integer "duration"
     t.string "external_user_emails"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "slots", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.string "status"
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -55,11 +57,11 @@ ActiveRecord::Schema.define(version: 2022_02_28_144406) do
     t.string "username"
     t.string "company"
     t.string "API_link"
-    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
   add_foreign_key "slots", "events"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
