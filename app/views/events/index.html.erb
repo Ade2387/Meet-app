@@ -2,7 +2,7 @@
 
 <ul>
   <% @events.each do |event| %>
-    <li><%= event.description %>
+    <li>Meeting: <%= event.description %>
         - duration: <%= event.duration %>
         - start: <%= event.start_at %>
         - end: <%= event.end_at %>
@@ -10,3 +10,6 @@
         - attendees: <%#= UserEvent.event_id[event.id] %>
   <% end %>
 </ul>
+
+<%= link_to "Home", root_path %>
+<%= link_to "New Event", new_user_event_path(current_user) %>

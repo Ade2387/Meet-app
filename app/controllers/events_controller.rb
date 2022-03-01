@@ -16,7 +16,16 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.save
+    @user_ids = params[:event][:users]
+    if @event.save
+      @user_ids.each do |id|
+        @user = User.find(id)
+        @event.users << @user
+      end
+      redirect_to user_events_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
