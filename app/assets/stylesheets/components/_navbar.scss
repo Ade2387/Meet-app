@@ -45,13 +45,18 @@ color: #0067FF
   font-size: 26px;
   text-decoration: none;
   top: 30px;
-  right: 30px;
+  right: auto;
   position: absolute;
   font-family: 'Poller One';
   padding: 1px;
-  float: right;
 }
 
 .nav-link:hover {
-  color: #A3BAC3;
+  color: #A3BAC3 !important;
+  padding: 0 0 0 30;
+  text-decoration: underline;
+  transition: 0.7s;
+}
+.nav-item {
+  position:relative;
 }
