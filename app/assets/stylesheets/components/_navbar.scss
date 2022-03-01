@@ -60,4 +60,21 @@ color: #0067FF
 .nav-item img{
   position:center;
   left: -90px;
+  border-radius: 50%;
+}
+.nav-item:hover{
+  cursor: pointer;
+  border-bottom: black;
+}
+
+.dropdown-item {
+  color: #0067FF !important;
+  background-color: #A3BAC3;
+}
+.dropdown-item:hover {
+
+}
+
+.dropdown-menu {
+  background-color: #A3BAC3;
 }
