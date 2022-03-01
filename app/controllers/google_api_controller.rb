@@ -8,12 +8,11 @@ class GoogleApiController < ApplicationController
   def callback
     client = Signet::OAuth2::Client.new(client_options)
     client.code = params[:code]
-
     response = client.fetch_access_token!
 
     session[:authorization] = response
 
-    redirect_to "/calendars"
+    redirect_to "/dashboard_events"
   end
 
   def calendars
@@ -22,7 +21,6 @@ class GoogleApiController < ApplicationController
 
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
-
 
     @calendar_list = service.list_calendar_lists
   end
