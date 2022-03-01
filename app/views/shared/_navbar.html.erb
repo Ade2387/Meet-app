@@ -18,15 +18,20 @@
           <li class="nav-item active">
             <%= link_to "Profile", "#", class: "nav-link" %>
           </li>
-
           <li class="nav-item">
-            <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: “avatar ”, id: “navbar-avatar”,'aria-haspopup': true, 'aria-expanded': false %>
+            <%= link_to "Messages", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
-            <%= image_tag “avatar_default.png”, class: “avatar”, id: “navbar-avatar”,'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "item" %>
+            <%= image_tag "avatar_default.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
           </li>
         <% else %>
           <li class="nav-item">
