@@ -1,0 +1,12 @@
+<H1>Index Event page</H1>
+
+<ul>
+  <% @events.each do |event| %>
+    <li><%= event.description %>
+        - duration: <%= event.duration %>
+        - start: <%= event.start_at %>
+        - end: <%= event.end_at %>
+        - created by: <%= event.user.first_name %></li>
+        - attendees: <%#= UserEvent.event_id[event.id] %>
+  <% end %>
+</ul>
