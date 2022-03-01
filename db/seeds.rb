@@ -14,10 +14,10 @@ if Rails.env.development?
   User.destroy_all
 end
 
-arno = User.create(username: "arno", email: "a@a.a", password: "123456", company: "Meet")
-oleg = User.create(username: "oleg", email: "b@b.b", password: "azerty", company: "Meet")
-sebastien = User.create(username: "sebastien", email: "c@c.c", password: "sebastien", company: "Meet")
-anis = User.create(username: "anis", email: "d@d.d", password: "password", company: "Meet")
+arno = User.create(username: "arno", email: "a@a.a", password: "123456", first_name: "Arno", last_name: "Debelle", company: "Meet")
+oleg = User.create(username: "oleg", email: "b@b.b", password: "azerty", first_name: "Oleg", last_name: "Deru", company: "Meet")
+sebastien = User.create(username: "sebastien", email: "c@c.c", password: "sebastien", first_name: "Sebastien", last_name: "Neyt", company: "Meet")
+anis = User.create(username: "anis", email: "d@d.d", password: "password", first_name: "Anis", last_name: "Samimi", company: "Meet")
 
 meeting1 = Event.create!(start_at: Time.now, end_at: Time.now + 10800, description: "Team meeting - project X", duration: 1800, user: arno)
 
