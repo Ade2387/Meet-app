@@ -1,7 +1,7 @@
 .footer-basic {
   padding:20px 0;
-  background-color:#f4f2f2;
-  color:#0F56B9;
+  background-color: rgba(0,0,0,0.2);
+  color:#ffffff;
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -43,7 +43,7 @@
   display:inline-block;
   text-align:center;
   border-radius:50%;
-  border:1px solid #ccc;
+  border:1px solid rgb(253, 250, 250);
   margin:0 8px;
   color:inherit;
   opacity:0.7;
@@ -57,6 +57,6 @@
   margin-top:15px;
   text-align:center;
   font-size:13px;
-  color:#aaa;
+  color:rgb(252, 250, 250);
   margin-bottom:0;
 }
