@@ -5,18 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 if Rails.env.development?
+  puts "Destroying Data Base"
   Slot.destroy_all
   UserEvent.destroy_all
   Event.destroy_all
   User.destroy_all
 end
 
-arno = User.create(username: "arno", email: "a@a.a", password: "123456", first_name: "Arno", last_name: "Debelle", company: "Meet")
-oleg = User.create(username: "oleg", email: "b@b.b", password: "azerty", first_name: "Oleg", last_name: "Deru", company: "Meet")
-sebastien = User.create(username: "sebastien", email: "c@c.c", password: "sebastien", first_name: "Sebastien", last_name: "Neyt", company: "Meet")
-anis = User.create(username: "anis", email: "d@d.d", password: "password", first_name: "Anis", last_name: "Samimi", company: "Meet")
+puts "Generating Seeds"
+
+file = URI.open('https://avatars.githubusercontent.com/u/92763640?v=4')
+arno = User.new(username: "arno", email: "arno@gmail.com", password: "password", first_name: "Arno", last_name: "Debelle", company: "Meet")
+arno.photo.attach(io: file, filename: 'arno.jpeg', content_type: 'image/jpeg')
+arno.save!
+
+file = URI.open('https://avatars.githubusercontent.com/u/95923023?v=4')
+oleg = User.new(username: "oleg", email: "oleg@gmail.com", password: "password", first_name: "Oleg", last_name: "Deru", company: "Meet")
+oleg.photo.attach(io: file, filename: 'oleg.jpeg', content_type: 'image/jpeg')
+oleg.save
+
+file = URI.open('https://avatars.githubusercontent.com/u/96817348?v=4')
+sebastien = User.new(username: "sebastien", email: "sebastien@gmail.com", password: "password", first_name: "Sebastien", last_name: "Neyt", company: "Meet")
+sebastien.photo.attach(io: file, filename: 'sebastien.jpeg', content_type: 'image/jpeg')
+sebastien.save
+
+file = URI.open('https://avatars.githubusercontent.com/u/97437632?v=4')
+anis = User.new(username: "anis", email: "anis@gmail.com", password: "password", first_name: "Anis", last_name: "Samimi", company: "Meet")
+anis.photo.attach(io: file, filename: 'anis.jpeg', content_type: 'image/jpeg')
+anis.save
 
 meeting1 = Event.create!(start_at: Time.now, end_at: Time.now + 10800, description: "Team meeting - project X", duration: 1800, user: arno)
 
@@ -29,7 +48,4 @@ slot1 = Slot.create!(event: meeting1, start_at: Time.now, end_at: Time.now + 180
 slot2 = Slot.create(event: meeting1, start_at: Time.now + 1800, end_at: Time.now + 3600)
 slot3 = Slot.create(event: meeting1, start_at: Time.now + 3600, end_at: Time.now + 5400)
 
-p User.last
-p meeting1
-p UserEvent.last
-p Slot.last
+puts "Seeds Generated!"
