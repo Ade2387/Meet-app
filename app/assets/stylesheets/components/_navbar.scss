@@ -46,7 +46,7 @@ color: #0067FF
   text-decoration: none;
   top: 30px;
   right: auto;
-  position: absolute;
+  position: center;
   font-family: 'Poller One';
   padding: 1px;
 }
@@ -57,6 +57,7 @@ color: #0067FF
   text-decoration: underline;
   transition: 0.7s;
 }
-.nav-item {
-  position:relative;
+.nav-item img{
+  position:center;
+  left: -90px;
 }
