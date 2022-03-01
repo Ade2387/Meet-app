@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :events
   end
   resources :events do
-    resources :slots, only: %i[index new create update ]
+    resources :slots, only: %i[index new create update]
   end
   resources :slots, only: [:destroy]
 end
