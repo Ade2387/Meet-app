@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #ffffff;
+  border-bottom: #A3BAC3;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,6 +9,72 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+}
+
+.navbar-brand img {
+  border: 1px black;
+  border-radius: 10px;
+}
+.nav-link:hover {
+color: #0067FF
+}
+
+.navbar-title {
+  color: #0067FF;
+  font-family: 'Poller One', cursive;
+  width:400px;
+  height: max-content;
+  font: bold 100px;
+  size: 100px;
+
+}
+
+.navbar-title p {
+  width: 300px;
+  height: 50px;
+  margin:auto;
+  display: block;
+  flex:auto;
+  font-size: 30px;
+  font-family: 'Poller One';
+  text-align: center;
+}
+.nav-link {
+  color:#0067FF !important;
+  font-size: 26px;
+  text-decoration: none;
+  top: 30px;
+  right: auto;
+  position: center;
+  font-family: 'Poller One';
+  padding: 1px;
+}
+
+.nav-link:hover {
+  color: #A3BAC3 !important;
+  padding: 0 0 0 30;
+  text-decoration: underline;
+  transition: 0.7s;
+}
+.nav-item img{
+  position:center;
+  left: -90px;
+  border-radius: 50%;
+}
+.nav-item:hover{
+  cursor: pointer;
+  border-bottom: black;
+}
+
+.dropdown-item {
+  color: #0067FF !important;
+  background-color: #A3BAC3;
+}
+.dropdown-item:hover {
+
+}
+
+.dropdown-menu {
+  background-color: #A3BAC3;
 }
