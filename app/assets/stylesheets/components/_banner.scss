@@ -2,6 +2,7 @@
   height: 1000px;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("background-home.jpg");
   background-size: cover;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .banner-content {
   display: flex;
@@ -14,12 +15,34 @@
   }
   p {
     color: white;
+    margin-bottom: 0;
   }
   img {
     height: 400px;
   }
 }
 
+.bottom-container {
+  color: white;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 154px;
+}
 #banner-button {
 
+}
+
+.top-info {
+  display: flex;
+}
+
+.mid-info {
+  display: flex;
+}
+
+.bottom-info {
+  display: flex;
 }
