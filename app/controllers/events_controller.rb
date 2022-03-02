@@ -28,11 +28,12 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @employees = User.where(company: current_user.company)
   end
 
   def update
     if @event.update(event_params)
-      redirect_to @event, notice: 'Your meeting has been successfully updated.'
+      redirect_to user_events_path(current_user), notice: 'Your meeting has been successfully updated.'
     else
       render :edit
     end

@@ -12,7 +12,10 @@
           - attendees: <% event.user_events.each do |user| %>
           <%= user.user.first_name %>
           <% end %>
-          <%= link_to "Edit", edit_user_event_path(current_user, event) %></li>
+          <%= link_to "Edit", edit_user_event_path(current_user, event) %>
+          <%= link_to "Delete", event_path(event),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></li>
     <% end %>
   <% else %>
     <%= "You haven't created any meeting yet" %>
