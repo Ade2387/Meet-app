@@ -10,7 +10,7 @@
     <h3><%= "Welcome to your dashboard #{current_user.first_name}!"%></h3>
 
     <div>
-      <img id="dashboard-avatar" src="<%= cl_image_tag current_user.photo.key %>" alt="That's you">
+     <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
     </div>
 
       <br>
