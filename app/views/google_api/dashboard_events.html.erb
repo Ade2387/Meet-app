@@ -1,6 +1,7 @@
 <ul>
   <% @event_list.items.each do |event| %>
     <li><%= event.summary %> (<%= event.id %>)</li>
+    <li><%= event.start.date_time%>---<%= event.end.date_time%></li>
   <% end %>
 </ul>
 <%# <% binding.pry %>
