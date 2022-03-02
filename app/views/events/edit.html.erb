@@ -2,11 +2,12 @@
       <H1>Edit Event</H1>
       <%= simple_form_for([current_user, @event]) do |f| %>
           <div class=new-car-form>
+            <%= f.input :name %>
             <%= f.input :description %>
             <%# duration in sec... need to be in minutes %>
             <%= f.input :duration %>
-            <%= f.input :start_at %>
-            <%= f.input :end_at %>
+            <%= f.input :start_time %>
+            <%= f.input :end_time %>
             <%= f.input :users, collection: @employees, label_method: :first_name, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
             <%= f.submit "Edit", class: "btn btn-primary" %>
           </div>
