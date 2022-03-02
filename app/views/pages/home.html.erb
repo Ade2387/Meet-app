@@ -2,4 +2,5 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <%= link_to "Dashboard", dashboard_path %>
-<%= link_to "Event", user_events_path(current_user) %>
+<%# Need to be activated only when sign-in otherwise it crashes %>
+<%#= link_to "Event", user_events_path(current_user) %>
