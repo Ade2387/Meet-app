@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
 
@@ -9,14 +9,14 @@
     </button>
 
         <span class ="navbar-title">
-        <p> Hello User </p>
+        <h3><%= "Welcome to Meet, #{current_user.username}!"%></h3>
         </span>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Profile", "#", class: "nav-link" %>
+            <%= link_to "Profile", "/dashboard", class: "nav-link" %>
           </li>
           <li class="nav-item">
           </li>
@@ -39,6 +39,3 @@
     </div>
   </div>
 </div>
-
-#0067FF
-#0F56B9
