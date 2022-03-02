@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   def index
-    # @user = User.find(params[:user_id])
     @events = Event.all
   end
 
@@ -9,7 +8,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    # @user = User.find(params[:user_id])
     @employees = User.where(company: current_user.company)
     @event = Event.new
   end
