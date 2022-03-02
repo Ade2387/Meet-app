@@ -1,0 +1,39 @@
+
+.profile-container {
+  padding: 30px;
+  border: solid 3px;
+  border-radius: 15px;
+  border-color: white;
+  margin: 20px 10px;
+  text-align: center;
+  background-image: linear-gradient(to top right,#0067FF,#0F56B9);
+  color: white;
+  width: 30%;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  font-family: 'Roboto';
+}
+
+.profile-container h3 {
+  font-family: 'Poller One';
+  text-decoration: underline;
+}
+
+.profile-container .btn-primary {
+  background-color: #0D6EFD;
+  color: white;
+  border-radius: 20px;
+  transition: 0.7s;
+}
+
+.profile-container .btn-primary:hover {
+  color: #0067FF;
+  background-color: white;
+  border: solid black
+}
+
+.profile-container img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border:solid black;
+}

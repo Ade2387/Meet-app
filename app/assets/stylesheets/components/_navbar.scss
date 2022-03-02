@@ -4,6 +4,10 @@
   border-bottom: #A3BAC3;
 }
 
+.navbar {
+  border-bottom: solid 2px#A3BAC3;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -17,28 +21,27 @@
   border-radius: 10px;
 }
 .nav-link:hover {
-color: #0067FF
+  color: #0067FF
 }
 
 .navbar-title {
   color: #0067FF;
   font-family: 'Poller One', cursive;
-  width:400px;
-  height: max-content;
-  font: bold 100px;
-  size: 100px;
+  width: 500px;
+  height: 50px;
+  text-align: center;
 
 }
 
-.navbar-title p {
-  width: 300px;
-  height: 50px;
+.navbar-title h3 {
+  width:max-content;
+  height: max-content;
   margin:auto;
   display: block;
   flex:auto;
   font-size: 30px;
   font-family: 'Poller One';
-  text-align: center;
+
 }
 .nav-link {
   color:#0067FF !important;
@@ -71,9 +74,7 @@ color: #0067FF
   color: #0067FF !important;
   background-color: #A3BAC3;
 }
-.dropdown-item:hover {
 
-}
 
 .dropdown-menu {
   background-color: #A3BAC3;

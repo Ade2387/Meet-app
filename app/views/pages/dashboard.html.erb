@@ -1,6 +1,24 @@
-<h1>Welcome to the dashboard</h1>
-<ul>
-  <% @event_list.items.each do |event| %>
-    <li><%= event.summary %> (<%= event.id %>)</li>
-  <% end %>
-</ul>
+<%# <h1>Welcome to the dashboard</h1> %>
+
+<%# <% <ul> %>
+  <%# <% @event_list.items.each do |event| %>
+    <%# <li><%= event.summary (<%= event.id)</li> %>
+  <%# <% end %>
+<%# </ul> %>
+<div class="dashboard-container">
+  <div class="profile-container">
+    <h3><%= "Welcome to your dashboard #{current_user.first_name}!"%></h3>
+
+    <div>
+     <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+    </div>
+
+      <br>
+      <div class="profile-text">
+      <p><%= "Username: #{current_user.username}" %></p>
+      <p><%= "Email: #{current_user.email}" %></p>
+      <p><%= "Member since: #{current_user.created_at}" %></p>
+      <a href="/users/edit" class="btn btn-primary">Edit profile</a>
+      </div>
+  </div>
+</div>

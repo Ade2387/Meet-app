@@ -11,3 +11,18 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/dashboard";
+@import "pages/edit";
+
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: rgb(2,0,36);
+  background: linear-gradient(32deg, rgba(2,0,36,1) 0%, rgba(48,22,148,1) 28%, rgba(0,212,255,1) 100%);
+
+}
