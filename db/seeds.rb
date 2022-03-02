@@ -37,7 +37,7 @@ anis = User.new(username: "anis", email: "anis@gmail.com", password: "password",
 anis.photo.attach(io: file, filename: 'anis.jpeg', content_type: 'image/jpeg')
 anis.save
 
-meeting1 = Event.create!(start_at: Time.now, end_at: Time.now + 10800, description: "Team meeting - project X", duration: 1800, user: arno)
+meeting1 = Event.create!(start_at: Time.now, end_at: Time.now + 10800, name: "Team meeting", description: "project X", duration: 1800, user: arno)
 
 UserEvent.create(event: meeting1, user: arno)
 UserEvent.create(event: meeting1, user: oleg)
