@@ -8,6 +8,11 @@
 <div class="dashboard-container">
   <div class="profile-container">
     <h3><%= "Welcome to your dashboard #{current_user.username}!"%></h3>
+
+    <div>
+      <img id="dashboard-avatar" src="<%= current_user.photo %>" alt="That's you">
+    </div>
+
       <br>
       <div class="profile-text">
       <p><%= "Username: #{current_user.username}" %></p>
