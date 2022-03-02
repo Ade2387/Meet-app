@@ -108,6 +108,8 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.1)
     ffi (1.15.5)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
     gems (1.2.0)
@@ -323,8 +325,8 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  x86_64-darwin-18
   arm64-darwin-21
+  x86_64-darwin-18
   x86_64-darwin-21
   x86_64-linux
 
@@ -336,6 +338,7 @@ DEPENDENCIES
   cloudinary (~> 1.16.0)
   devise
   dotenv-rails
+  font-awesome-rails
   font-awesome-sass
   google-api-client
   jbuilder (~> 2.7)
