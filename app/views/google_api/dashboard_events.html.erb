@@ -2,6 +2,8 @@
   <% @event_list.items.each do |event| %>
     <li><%= event.summary %> (<%= event.id %>)</li>
     <li><%= event.start.date_time%>---<%= event.end.date_time%></li>
+    <li>Duration: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</li>
+    <br>
   <% end %>
 </ul>
 <%# <% binding.pry %>
