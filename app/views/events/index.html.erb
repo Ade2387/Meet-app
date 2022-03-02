@@ -1,0 +1,48 @@
+<H1>Index Event page</H1>
+
+<H2>Meetings I have created</H2>
+<ul>
+  <% if current_user.events.length != 0 %>
+    <% current_user.events.each do |event| %>
+      <li>Meeting: <%= event.name %>
+          - description: <%= event.description %>
+          - duration: <%= event.duration %>
+          - start: <%= event.start_time %>
+          - end: <%= event.end_time %>
+          - created by: <%= event.user.first_name %>
+          - attendees: <% event.user_events.each do |user| %>
+          <%= user.user.first_name %>
+          <% end %>
+          <%= link_to "Edit", edit_user_event_path(current_user, event) %>
+          <%= link_to "Delete", event_path(event),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+          <%= link_to "Available slots for this meeting", event_slots_path(event) %></li>
+    <% end %>
+  <% else %>
+    <%= "You haven't created any meeting yet" %>
+  <% end %>
+</ul>
+
+<H2>Meetings I've been invited to</H2>
+<ul>
+  <% @events.each do |event| %>
+    <% event.user_events.each do |user_event| %>
+      <% if user_event.user == current_user %>
+        <li>Meeting: <%= event.name %>
+          - description: <%= event.description %>
+          - duration: <%= event.duration %>
+          - start: <%= event.start_time %>
+          - end: <%= event.end_time %>
+          - created by: <%= event.user.first_name %></li>
+          - attendees: <% event.user_events.each do |user| %>
+          <%= user.user.first_name %>
+          <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= link_to "Home", root_path %>
+<%= link_to "New Event", new_user_event_path(current_user) %>

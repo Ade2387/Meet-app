@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+<<<<<<< HEAD
 
 body {
   min-height: 100vh;
@@ -22,3 +23,7 @@ body {
   background: linear-gradient(32deg, rgba(2,0,36,1) 0%, rgba(48,22,148,1) 28%, rgba(0,212,255,1) 100%);
 
 }
+=======
+@import "pages/dashboard";
+@import "pages/edit";
+>>>>>>> master
