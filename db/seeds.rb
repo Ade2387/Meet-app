@@ -37,15 +37,15 @@ anis = User.new(username: "anis", email: "anis@gmail.com", password: "password",
 anis.photo.attach(io: file, filename: 'anis.jpeg', content_type: 'image/jpeg')
 anis.save
 
-meeting1 = Event.create!(start_at: Time.now, end_at: Time.now + 10800, name: "Team meeting", description: "project X", duration: 1800, user: arno)
+meeting1 = Event.create!(start_time: Time.now, end_time: Time.now + 10800, name: "Team meeting", description: "project X", duration: 1800, user: arno)
 
 UserEvent.create(event: meeting1, user: arno)
 UserEvent.create(event: meeting1, user: oleg)
 UserEvent.create(event: meeting1, user: sebastien)
 UserEvent.create(event: meeting1, user: anis)
 
-slot1 = Slot.create!(event: meeting1, start_at: Time.now, end_at: Time.now + 1800)
-slot2 = Slot.create(event: meeting1, start_at: Time.now + 1800, end_at: Time.now + 3600)
-slot3 = Slot.create(event: meeting1, start_at: Time.now + 3600, end_at: Time.now + 5400)
+slot1 = Slot.create!(event: meeting1, start_time: Time.now, end_time: Time.now + 1800)
+slot2 = Slot.create(event: meeting1, start_time: Time.now + 1800, end_time: Time.now + 3600)
+slot3 = Slot.create(event: meeting1, start_time: Time.now + 3600, end_time: Time.now + 5400)
 
 puts "Seeds Generated!"
