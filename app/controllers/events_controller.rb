@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @employees = User.where(company: current_user.company)
     @event = Event.new
   end
 
