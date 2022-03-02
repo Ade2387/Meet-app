@@ -10,7 +10,7 @@
   color: white;
   width: 30%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-  font-family: 'Poller One';
+  font-family: 'Roboto';
 }
 
 .profile-container h3 {
@@ -28,5 +28,12 @@
 .profile-container .btn-primary:hover {
   color: #0067FF;
   background-color: white;
-  border: 20px;
+  border: solid black
+}
+
+.profile-container img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border:solid black;
 }
