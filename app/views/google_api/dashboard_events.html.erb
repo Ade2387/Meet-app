@@ -1,9 +1,23 @@
-<ul>
+<div class="container d-flex">
   <% @event_list.items.each do |event| %>
-    <li><%= event.summary %> (<%= event.id %>)</li>
-    <li><%= event.start.date_time%>---<%= event.end.date_time%></li>
-    <li>Duration: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</li>
-    <br>
+    <div class="event-example">
+      <p><b>CREATOR:</b> <%= event.creator.email %></p>
+      <p><b>DESCRIPTION</b>: <%= event.summary %></p>
+      <p><b>START:</b>: <%= event.start.date_time%></p>
+      <p><b>END:</b>: <%= event.end.date_time%></p>
+      <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
+    </div>
   <% end %>
-</ul>
+<br>
 <%# <% binding.pry %>
+
+  <% @event_list2.items.each do |event| %>
+    <div class="event-example">
+      <p><b>CREATOR:</b> <%= event.creator.email %></p>
+      <p><b>DESCRIPTION</b>: <%= event.summary %></p>
+      <p><b>START:</b>: <%= event.start.date_time%></p>
+      <p><b>END:</b>: <%= event.end.date_time%></p>
+      <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
+    </div>
+  <% end %>
+</div>
