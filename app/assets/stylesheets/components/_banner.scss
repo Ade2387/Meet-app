@@ -1,13 +1,9 @@
-.top-container {
-  height: 1000px;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("background-home.jpg");
-  background-size: cover;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+
 .banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   h1 {
     color: white;
     font-weight: bold;
@@ -18,8 +14,52 @@
     margin-bottom: 0;
   }
   img {
-    height: 400px;
+    height: 470px;
   }
+}
+
+span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+
+}
+span a:before,
+span a:after{
+  position: absolute;
+  content: "SIGN UP";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgb(15, 15, 15);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+span a:before{
+  color: rgb(251, 251, 251);
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span a:after{
+  color: rgb(0, 0, 0);
+  transform: rotateX(90deg) translateZ(25px);
+  background-color: white;
+}
+span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
 }
 
 .bottom-container {
@@ -29,20 +69,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 154px;
-}
-#banner-button {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 
+  justify-content: space-between;
+  h1 {
+    margin-bottom: 40px;
+  }
+  p {
+    max-width: 350px;
+
+  }
 }
 
-.top-info {
+.info-1 {
   display: flex;
-}
-
-.mid-info {
-  display: flex;
-}
-
-.bottom-info {
-  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+  span {
+    padding-right: 2rem;
+    width: 120px;
+  }
 }
