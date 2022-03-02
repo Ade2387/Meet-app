@@ -8,9 +8,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+      <% if user_signed_in? %>
         <span class ="navbar-title">
-        <h3><%= "Welcome to Meet, #{current_user.username}!"%></h3>
+        <h3> Welcome to Meet, <%= current_user.first_name %></h3>
         </span>
+      <% end %>
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -27,6 +30,8 @@
             <%= image_tag "avatar_default.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Event", user_events_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>

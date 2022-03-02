@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/', to: 'pages#homepage'
   get '/dashboard', to: 'pages#dashboard'
-  # get '/dashboard', to: 'pages#dashboard'
   resources :users do
     resources :events
   end
@@ -16,4 +15,5 @@ Rails.application.routes.draw do
     resources :slots, only: %i[index new create update]
   end
   resources :slots, only: [:destroy]
+  delete '/events/:id', to: 'events#destroy'
 end
