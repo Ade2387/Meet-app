@@ -1,23 +1,33 @@
-<div class="container d-flex">
-  <% @event_list.items.each do |event| %>
-    <div class="event-example">
-      <p><b>CREATOR:</b> <%= event.creator.email %></p>
-      <p><b>DESCRIPTION</b>: <%= event.summary %></p>
-      <p><b>START:</b>: <%= event.start.date_time%></p>
-      <p><b>END:</b>: <%= event.end.date_time%></p>
-      <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
-    </div>
-  <% end %>
-<br>
+<div class="container">
+  <h2>Fetching events between <%= @time_min.to_date %>   and   <%= @time_max.to_date %></h2>
+  <br>
+  <h4>Agenda from user 1 (bas_neyt@hotmail.com )</h4>
+  <div class="d-flex">
+    <% @event_list.items.each do |event| %>
+      <div class="event-example">
+        <p><b>CREATOR:</b> <%= event.creator.email %></p>
+        <p><b>DESCRIPTION</b>: <%= event.summary %></p>
+        <p><b>START:</b>: <%= event.start.date_time.strftime('%a, %d %b %Y %H:%M')%></p>
+        <p><b>END:</b>: <%= event.end.date_time.strftime('%a, %d %b %Y %H:%M')%></p>
+        <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <br>
 <%# <% binding.pry %>
-
-  <% @event_list2.items.each do |event| %>
-    <div class="event-example">
-      <p><b>CREATOR:</b> <%= event.creator.email %></p>
-      <p><b>DESCRIPTION</b>: <%= event.summary %></p>
-      <p><b>START:</b>: <%= event.start.date_time%></p>
-      <p><b>END:</b>: <%= event.end.date_time%></p>
-      <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
+  <h4>Agenda from user 2 (olafdery@gmail.com)</h4>
+  <div class="d-flex">
+    <% @event_list2.items.each do |event| %>
+      <div class="event-example">
+        <p><b>CREATOR:</b> <%= event.creator.email %></p>
+        <p><b>DESCRIPTION</b>: <%= event.summary %></p>
+        <p><b>START:</b>: <%= event.start.date_time.strftime('%a, %d %b %Y %H:%M')%></p>
+        <p><b>END:</b>: <%= event.end.date_time.strftime('%a, %d %b %Y %H:%M')%></p>
+        <p><b>DURATION:</b>: <%= (event.end.date_time.to_i - event.start.date_time.to_i) / 60 %> min</p>
+      </div>
+    <% end %>
     </div>
-  <% end %>
+    <a href="/timeslots" class="btn btn-warning">Click here to calculate the available timeslots</a>
 </div>
+<br>
