@@ -1,13 +1,9 @@
-<H1>Index Slots page</H1>
+<H1>Here are the available slot for the meeting: <%= @event.description %></H1>
 
 <ul>
   <% @event.slots.each do |slot| %>
     <li>start: <%= slot.start_at %>
         - end: <%= slot.end_at %>
         - status: <%= slot.status %>
-        <%#= link_to "Edit", edit_user_event_path(current_user, event) %>
-        <%#= link_to "Delete", event_path(event),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
   <% end %>
 </ul>
