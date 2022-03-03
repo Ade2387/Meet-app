@@ -15,27 +15,16 @@
         <a href="/users/edit" class="btn btn-primary">Edit profile</a>
         </div>
     </div>
-  </div>
+    <div class="container">
+      <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
+        <%= date %>
 
-  <div class="container">
-    <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
-      <%= date %>
-
-      <% meetings.each do |meeting| %>
-        <div>
-          <%= link_to meeting.name, event_path(meeting) %>
-        </div>
+        <% meetings.each do |meeting| %>
+          <div>
+            <%= link_to meeting.name, event_path(meeting) %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-
-
-      <%#= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
-        <%#= date %>
-        <%# meetings.each do |meeting| %>
-          <%# <div class="meeting"> %>
-          <p><%#= meeting.name %></p>
-          <%# </div> %>
-        <%# end %>
-      <%# end %>
+    </div>
   </div>
 </div>
