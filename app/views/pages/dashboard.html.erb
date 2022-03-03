@@ -23,7 +23,7 @@
 
       <% meetings.each do |meeting| %>
         <div>
-          <%= meeting.name %>
+          <%= link_to meeting.name, event_path(meeting) %>
         </div>
       <% end %>
     <% end %>

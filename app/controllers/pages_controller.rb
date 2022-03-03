@@ -5,17 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    # Scope your query to the dates being shown:
+    # Simple Calendar config:
     start_date = params.fetch(:start_date, Date.today).to_date
-
-    # For a monthly view:
-    @meetings = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-
-  end
-
-  def index
-
-    # Or, for a weekly view:
-      # @meetings = Event.where(starts_at: start_date.beginning_of_week..start_date.end_of_week)
+    @meetings = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user: current_user)
   end
 end
