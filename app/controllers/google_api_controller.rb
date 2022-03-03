@@ -62,8 +62,34 @@ class GoogleApiController < ApplicationController
 
     # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
     # input = 30
-    duration = 60.minutes
+    duration = 30.minutes
     @timeslots = create_timeslots(duration, @free_time)
+  end
+
+  def create_event
+    call_google_api
+
+    event = Google::Apis::CalendarV3::Event.new(
+      summary: 'Event created from vscode',
+      description: 'A chance to hear more about Google\'s developer products.',
+      start: Google::Apis::CalendarV3::EventDateTime.new(
+        date_time: '2022-03-5T15:30:00-00:00',
+      ),
+      end: Google::Apis::CalendarV3::EventDateTime.new(
+        date_time: '2022-03-5T17:00:00-00:00',
+      ),
+      attendees: [
+        Google::Apis::CalendarV3::EventAttendee.new(
+          email: 'bas_neyt@hotmail.com'
+        ),
+        Google::Apis::CalendarV3::EventAttendee.new(
+          email: 'olafdery@gmail.com'
+        )
+      ]
+    )
+
+    @service.insert_event('primary', event)
+    # puts "Event created: #{result.html_link}"
   end
 
   private
