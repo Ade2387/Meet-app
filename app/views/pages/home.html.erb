@@ -1,23 +1,25 @@
 <div class="top-container">
   <div class="banner-content">
-      <h1>Meet</h1>
-      <p>Scheduling a meeting was never easier, let us do the work!</p>
-      <%= image_tag('cartoon-meeting.png') %>
-      <button id="banner-button">Sign up!</button>
-      <%# The below link is for development only  %>
-      <a href="/redirect">dashboard events</a>
-
-      <span><a href=""><%= link_to"", new_user_registration_path%> </a></span>
+      <h1>Meeting. <br> Was. <br> Never. <br> Easier.</h1>
+      <h2>Sit back, relax, and let us do the work!</h2>
+      <div class="homebuttons">
+        <span><a href="#bottom-container1" id='discover'></a></span>
+        <span><a href=""><%= link_to"", new_user_registration_path%></a></span>
+      </div>
   </div>
-  <div class="bottom-container">
+
+    <%= image_tag('cartoon-meeting.png') %>
+
+</div>
+  <div class="bottom-container" id="bottom-container1">
     <h1>So how does it work?</h1>
-    <div class="info-1">
-      <span>
-      <i class="fa-solid fa-calendar-days fa-5x"></i>
-      </span>
-      <p>Step 1: Sign up and link your google calendar to our app!</p>
+    <div class="info-1" >
+     <span>
+     <i class="fa-solid fa-calendar-days fa-5x"></i>
+     </span>
+     <p>Step 1: Sign up and link your google calendar to our app!</p>
     </div>
-    <div class="info-1">
+    <div class="info-2">
       <span>
       <i class="fa-solid fa-user-group fa-5x"></i>
       </span>
@@ -27,13 +29,12 @@
       <span>
       <i class="fa-solid fa-gears fa-5x"></i>
       </span>
-      <p>Step 3: Meet will check everyones calendar and calculate for you the availabilities</p>
+      <p>Step 3: Meet will check everyones calendar and calculate the availabilities for you!</p>
     </div>
-    <div class="info-1">
+    <div class="info-2">
       <span>
       <i class="fa-solid fa-circle-check fa-5x"></i>
       </span>
       <p>Step 4: Pick the date you prefer and that's it! you're done! ;)</p>
     </div>
   </div>
-</div>
