@@ -1,0 +1,47 @@
+.main-container  {
+  padding: 30px;
+  border: solid 3px;
+  border-radius: 15px;
+  border-color: white;
+  margin: 20px 10px;
+  text-align: center;
+  background-color: white;
+  color: black;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  font-family: 'Roboto';
+}
+
+.main-container h1 {
+  font-family: 'Poller One';
+  text-decoration: underline;
+}
+
+.main-container .btn-primary  {
+  color: white;
+  transition: 0.5;
+  border-radius: 15px;
+}
+
+.main-container .btn-primary:hover {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
+
+.main-container .btn-primary a {
+  color: white;
+}
+
+.main-container .btn-primary a:hover {
+  color: black
+}
+
+.mymeetings-container {
+  border-left: black solid 2px;
+}
+
+.mymeetings-container h2 {
+  text-decoration: underline#A3BAC3 solid 3px;
+}
