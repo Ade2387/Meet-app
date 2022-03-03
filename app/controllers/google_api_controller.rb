@@ -45,7 +45,7 @@ class GoogleApiController < ApplicationController
     create_array(@event_list_user1, @user1)
     create_array(@event_list_user2, @user2)
 
-    # optional - boundries
+    # OPTIONAL: boundries
 
     # combining the user arrays (user1, user2)
     @combined_array = merge_arrays(@user1, @user2)
@@ -62,7 +62,7 @@ class GoogleApiController < ApplicationController
 
     # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
     # input = 30
-    duration = 5.minutes
+    duration = 60.minutes
     @timeslots = create_timeslots(duration, @free_time)
   end
 
