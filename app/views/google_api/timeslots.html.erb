@@ -5,4 +5,8 @@
   <br>
   <p>Combined + refactored: <%= @x%></p>
   <p>Free time: <%= @free_time %></p>
+<h2>Available TIMESLOTS: </h2>
+  <% @timeslots.each do |slot| %>
+    <p><%= slot[0].strftime('%H:%M') %> -- <%= slot[1].strftime('%H:%M') %></p>
+  <% end %>
 </div>

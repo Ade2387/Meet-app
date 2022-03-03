@@ -1,7 +1,7 @@
 class GoogleApiController < ApplicationController
+
   def redirect
     client = Signet::OAuth2::Client.new(client_options)
-
     redirect_to client.authorization_uri.to_s
   end
 
@@ -9,58 +9,37 @@ class GoogleApiController < ApplicationController
     client = Signet::OAuth2::Client.new(client_options)
     client.code = params[:code]
     response = client.fetch_access_token!
-
     session[:authorization] = response
-
     redirect_to "/dashboard_events"
   end
 
   def calendars
-    client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-    # raise
-    @calendar_list = service.list_calendar_lists
+    call_google_api
+    @calendar_list = @service.list_calendar_lists
   end
 
   def dashboard_events
-    client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-
+    call_google_api
     # @event_list = service.list_events("primary")
-
     # the timeframe ( still to be inserted from the form)
     # @time_min = DateTime.yesterday.rfc3339
     # @time_max = (DateTime.tomorrow + 1).rfc3339
-
     @time_min = "2022-03-02T8:30:00+01:00"
     @time_max = "2022-03-02T18:00:00+01:00"
-
     # the requests for the different users events within this timeframe (when some1 selects the emails he want to add)
-    @event_list = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
-    @event_list2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
-
+    @event_list = @service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list2 = @service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
   end
 
   def timeslots
-    client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
+    call_google_api
+    # fetching the events from the attendees whitin the specific timeframe
     @time_min = "2022-03-02T8:30:00+01:00"
     @time_max = "2022-03-02T18:00:00+01:00"
-
-    # fetching the attendees events whitin the timeframe
     @user1 = []
     @user2 = []
-    @event_list_user1 = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
-    @event_list_user2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list_user1 = @service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list_user2 = @service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
 
     # creating the occupied arrays for each user
     @event_list_user1.items.each do |event|
@@ -102,7 +81,7 @@ class GoogleApiController < ApplicationController
       end
     end
 
-    # calculating free time
+    # calculating free time array
     indexx = 0
     @free_time = []
     while @x.length > (@free_time.length + 1)
@@ -112,20 +91,38 @@ class GoogleApiController < ApplicationController
     end
 
     # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
-    input = 30
-    duration = input * 60
-    timeslots = []
+    # input = 30
+    duration = 15.minutes
+    @timeslots = []
+
     @free_time.each do |interval|
-      subinterval = interval[0] + duration
-      while (subinterval) > interval[1]
-        slot = [interval[0], interval[0] + duration]
-        timeslots.push(slot)
+      subinterval = (interval[0] + duration)
+      loops = 0
+      while (subinterval) <= interval[1]
+        if loops != 0
+          slot = [subinterval - duration, subinterval]
+          @timeslots.push(slot)
+          subinterval += duration
+
+        else
+          slot = [interval[0], subinterval]
+          @timeslots.push(slot)
+          subinterval += duration
+          loops += 1
+        end
       end
     end
-
   end
 
   private
+
+  def call_google_api
+    client = Signet::OAuth2::Client.new(client_options)
+    client.update!(session[:authorization])
+
+    @service = Google::Apis::CalendarV3::CalendarService.new
+    @service.authorization = client
+  end
 
   def client_options
     {
