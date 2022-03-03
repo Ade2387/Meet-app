@@ -1,6 +1,11 @@
 .top-container {
   display: flex;
-  justify-content: space-around;
+
+  img {
+    height: 800px;
+    max-width: auto;
+    padding-left: 40px;
+  }
 }
 .banner-content {
   display: flex;
@@ -8,26 +13,36 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding-bottom: 80px;
+  padding-right: 50px;
+  padding-left: 50px;
   h1 {
     color: white;
     font-weight: bold;
     font-size: 45px;
-    padding: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    font-size: 70px;
+  }
+  h2 {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 35px;
+    padding-right: 30px;
+    padding-bottom: 50px;
   }
   p {
     color: white;
     margin-bottom: 0;
   }
+
 }
 
-.home-image {
-  img {
-    height: auto;
-    max-width: 100%;
-  }
-}
 
-span{
+
+
+.banner-content span{
   position: relative;
   display: inline-flex;
   width: 180px;
@@ -35,7 +50,7 @@ span{
   margin: 0 15px;
   perspective: 1000px;
 }
-span a{
+.banner-content span a{
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
@@ -44,8 +59,8 @@ span a{
   font-family: 'Montserrat', sans-serif;
 
 }
-span a:before,
-span a:after{
+.banner-content span a:before,
+.banner-content span a:after{
   position: absolute;
   content: "SIGN UP";
   height: 55px;
@@ -57,30 +72,37 @@ span a:after{
   box-sizing: border-box;
   border-radius: 5px;
 }
-span a:before{
+#discover {
+  &::before, &::after {
+    content: 'LEARN MORE' !important;
+  }
+
+}
+.banner-content span a:before{
   color: rgb(251, 251, 251);
   background: #000;
   transform: rotateY(0deg) translateZ(25px);
 }
-span a:after{
+.banner-content span a:after{
   color: rgb(0, 0, 0);
   transform: rotateX(90deg) translateZ(25px);
   background-color: white;
 }
-span a:hover{
+.banner-content span a:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }
 
 .bottom-container {
   color: white;
   justify-content: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
   margin: 0 auto;
   margin-bottom: 2rem;
+  padding-top: 50px;
 
   justify-content: space-between;
   h1 {
@@ -95,13 +117,31 @@ span a:hover{
 .info-1 {
   display: flex;
   justify-content: space-between;
-  padding: 35px;
+  padding-top: 35px;
+  margin-right: 380px;
   span {
     padding-right: 2rem;
     width: 120px;
   }
 }
 
+
+.info-2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+  margin-left: 380px;
+  span {
+    padding-right: 2rem;
+    width: 120px;
+  }
+}
 .homebuttons {
 display: flex;
+}
+
+@media screen and (max-width: 575px) {
+  .top-container, .bottom-container {
+    flex-direction: column;
+  }
 }
