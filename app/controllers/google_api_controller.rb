@@ -20,15 +20,13 @@ class GoogleApiController < ApplicationController
 
   def dashboard_events
     call_google_api
-    # @event_list = service.list_events("primary")
-    # the timeframe ( still to be inserted from the form)
-    # @time_min = DateTime.yesterday.rfc3339
-    # @time_max = (DateTime.tomorrow + 1).rfc3339
+
     @time_min = "2022-03-02T8:30:00+01:00"
     @time_max = "2022-03-02T18:00:00+01:00"
-    # the requests for the different users events within this timeframe (when some1 selects the emails he want to add)
-    @event_list = @service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
-    @event_list2 = @service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    attendees = ["bas_neyt@hotmail.com", "olafdery@gmail.com"]
+
+    @event_list = call_list_events(@time_min, @time_max, attendees[0])
+    @event_list2 = call_list_events(@time_min, @time_max, attendees[1])
   end
 
   def timeslots
@@ -36,82 +34,36 @@ class GoogleApiController < ApplicationController
     # fetching the events from the attendees whitin the specific timeframe
     @time_min = "2022-03-02T8:30:00+01:00"
     @time_max = "2022-03-02T18:00:00+01:00"
+    attendees = ["bas_neyt@hotmail.com", "olafdery@gmail.com"]
+
     @user1 = []
     @user2 = []
-    @event_list_user1 = @service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
-    @event_list_user2 = @service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list_user1 = call_list_events(@time_min, @time_max, attendees[0])
+    @event_list_user2 = call_list_events(@time_min, @time_max, attendees[1])
 
     # creating the occupied arrays for each user
-    @event_list_user1.items.each do |event|
-      @user1.push([event.start.date_time, event.end.date_time])
-    end
+    create_array(@event_list_user1, @user1)
+    create_array(@event_list_user2, @user2)
 
-    @event_list_user2.items.each do |event|
-      @user2.push([event.start.date_time, event.end.date_time])
-    end
     # optional - boundries
 
     # combining the user arrays (user1, user2)
-    @combined = []
-    @user1.each do |x|
-      @combined.push(x)
-    end
-    @user2.each do |x|
-      @combined.push(x)
-    end
+    @combined_array = merge_arrays(@user1, @user2)
 
     # sorting the subarrays based on the first military time
-    @x = @combined.sort { |time1, time2| time1[0] <=> time2[0] }
+    @sorted_array = @combined_array.sort { |time1, time2| time1[0] <=> time2[0] }
 
     # refactoring the overlapping timeframes
-    index = 0
 
-    while index < (@x.length - 1)
-      if @x[index][1] >= @x[index + 1][0]
-        if @x[index + 1][1] < @x[index][1]
-          @x.delete_at(index + 1)
-        else
-          new_slot = [@x[index][0], @x[index + 1][1]]
-          set = [index, index + 1]
-          @x.delete_if.with_index { |_, i| set.include? i }
-          @x.insert(index, new_slot)
-        end
-      else
-        index += 1
-      end
-    end
+    compact_array(@sorted_array)
 
     # calculating free time array
-    indexx = 0
-    @free_time = []
-    while @x.length > (@free_time.length + 1)
-      new_frame = [@x[indexx][1], @x[indexx + 1][0]]
-      @free_time.push(new_frame)
-      indexx += 1
-    end
+    @free_time = free_time(@sorted_array)
 
     # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
     # input = 30
-    duration = 15.minutes
-    @timeslots = []
-
-    @free_time.each do |interval|
-      subinterval = (interval[0] + duration)
-      loops = 0
-      while (subinterval) <= interval[1]
-        if loops != 0
-          slot = [subinterval - duration, subinterval]
-          @timeslots.push(slot)
-          subinterval += duration
-
-        else
-          slot = [interval[0], subinterval]
-          @timeslots.push(slot)
-          subinterval += duration
-          loops += 1
-        end
-      end
-    end
+    duration = 5.minutes
+    @timeslots = create_timeslots(duration, @free_time)
   end
 
   private
@@ -124,6 +76,78 @@ class GoogleApiController < ApplicationController
     @service.authorization = client
   end
 
+  def call_list_events(time_min, time_max, attendee)
+    return @service.list_events(attendee.to_s, time_min: time_min, time_max: time_max, order_by: "starttime", single_events: true)
+  end
+
+  def create_array(array, user)
+    array.items.each do |event|
+      user.push([event.start.date_time, event.end.date_time])
+    end
+  end
+
+  def merge_arrays(array1, array2)
+    merged = []
+    array1.each do |x|
+      merged.push(x)
+    end
+    array2.each do |x|
+      merged.push(x)
+    end
+    return merged
+  end
+
+  def compact_array(sorted_array)
+    index = 0
+    while index < (sorted_array.length - 1)
+      if sorted_array[index][1] >= sorted_array[index + 1][0]
+        if sorted_array[index + 1][1] < sorted_array[index][1]
+          sorted_array.delete_at(index + 1)
+        else
+          new_slot = [sorted_array[index][0], sorted_array[index + 1][1]]
+          set = [index, index + 1]
+          sorted_array.delete_if.with_index { |_, i| set.include? i }
+          sorted_array.insert(index, new_slot)
+        end
+      else
+        index += 1
+      end
+    end
+  end
+
+  def free_time(sorted_array)
+    free_time = []
+    indexx = 0
+    while sorted_array.length > (free_time.length + 1)
+      new_frame = [sorted_array[indexx][1], sorted_array[indexx + 1][0]]
+      free_time.push(new_frame)
+      indexx += 1
+    end
+    return free_time
+  end
+
+  def create_timeslots(duration, free_time_array)
+    timeslots = []
+    free_time_array.each do |interval|
+      subinterval = (interval[0] + duration)
+      loops = 0
+      while (subinterval) <= interval[1]
+        if loops != 0
+          slot = [subinterval - duration, subinterval]
+          timeslots.push(slot)
+          subinterval += duration
+
+        else
+          slot = [interval[0], subinterval]
+          timeslots.push(slot)
+          subinterval += duration
+          loops += 1
+        end
+      end
+    end
+    return timeslots
+  end
+
   def client_options
     {
       client_id: ENV["GOOGLE_CLIENT_ID"],
@@ -134,5 +158,4 @@ class GoogleApiController < ApplicationController
       redirect_uri: ENV["CALLBACK_URL"]
     }
   end
-
 end
