@@ -1,4 +1,3 @@
-
 <div class="background">
   <div class="dashboard-container">
     <div class="profile-container">
@@ -18,7 +17,17 @@
     </div>
   </div>
 
-  <%= month_calendar do |date| %>
-    <%= date %>
-  <% end %>
+  <div class="container">
+    <%= month_calendar do |date| %>
+      <%= date %>
+    <% end %>
+      <%#= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+        <%#= date %>
+        <%# meetings.each do |meeting| %>
+          <%# <div class="meeting"> %>
+          <p><%#= meeting.name %></p>
+          <%# </div> %>
+        <%# end %>
+      <%# end %>
+  </div>
 </div>
