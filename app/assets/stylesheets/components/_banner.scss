@@ -1,23 +1,50 @@
+.top-container {
+  display: flex;
 
+  img {
+    height: 800px;
+    max-width: auto;
+    padding-left: 40px;
+  }
+}
 .banner-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
+  padding-bottom: 80px;
+  padding-right: 50px;
+  padding-left: 50px;
   h1 {
     color: white;
     font-weight: bold;
     font-size: 45px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    font-size: 70px;
+  }
+  h2 {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 35px;
+    padding-right: 30px;
+    padding-bottom: 50px;
   }
   p {
     color: white;
     margin-bottom: 0;
   }
-  img {
-    height: 470px;
-  }
+
 }
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> master
 .banner-content span{
   position: relative;
   display: inline-flex;
@@ -48,6 +75,15 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+<<<<<<< HEAD
+#discover {
+  &::before, &::after {
+    content: 'LEARN MORE' !important;
+  }
+
+}
+=======
+>>>>>>> master
 .banner-content span a:before{
   color: rgb(251, 251, 251);
   background: #000;
@@ -65,13 +101,14 @@
 .bottom-container {
   color: white;
   justify-content: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
   margin: 0 auto;
   margin-bottom: 2rem;
+  padding-top: 50px;
 
   justify-content: space-between;
   h1 {
@@ -86,9 +123,31 @@
 .info-1 {
   display: flex;
   justify-content: space-between;
-  padding: 35px;
+  padding-top: 35px;
+  margin-right: 380px;
   span {
     padding-right: 2rem;
     width: 120px;
+  }
+}
+
+
+.info-2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+  margin-left: 380px;
+  span {
+    padding-right: 2rem;
+    width: 120px;
+  }
+}
+.homebuttons {
+display: flex;
+}
+
+@media screen and (max-width: 575px) {
+  .top-container, .bottom-container {
+    flex-direction: column;
   }
 }
