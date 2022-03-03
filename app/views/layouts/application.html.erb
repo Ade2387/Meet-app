@@ -19,11 +19,10 @@
   </head>
 
   <body>
-    <div class="content-container">
-      <%= render 'shared/navbar' %>
-      <%= yield %>
-      <%= render 'shared/flashes' %>
-      <%= render 'shared/footer' %>
-    </div>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+
+    <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
