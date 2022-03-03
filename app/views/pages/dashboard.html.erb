@@ -1,5 +1,9 @@
-<%# <h1>Welcome to the dashboard</h1> %>
+<div class="background">
+  <div class="dashboard-container">
+    <div class="profile-container">
+      <h3><%= "Welcome to your dashboard #{current_user.first_name}!"%></h3>
 
+<<<<<<< HEAD
 <%# <% <ul> %>
   <%# <% @event_list.items.each do |event| %>
     <%# <li><%= event.summary (<%= event.id)</li> %>
@@ -19,6 +23,41 @@
       <p><%= "Email: #{current_user.email}" %></p>
       <p><%= "Member since: #{current_user.created_at}" %></p>
       <a href="/users/edit" class="btn btn-primary">Edit profile</a>
+=======
+      <div>
+       <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+>>>>>>> 7db9a998f56e0d861b30cfa7f430ac686d7bd463
       </div>
+
+        <br>
+        <div class="profile-text">
+        <p><%= "Username: #{current_user.username}" %></p>
+        <p><%= "Email: #{current_user.email}" %></p>
+        <p><%= "Member since: #{current_user.created_at}" %></p>
+        <a href="/users/edit" class="btn btn-primary">Edit profile</a>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
+      <%= date %>
+
+      <% meetings.each do |meeting| %>
+        <div>
+          <%= link_to meeting.name, event_path(meeting) %>
+        </div>
+      <% end %>
+    <% end %>
+
+
+      <%#= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+        <%#= date %>
+        <%# meetings.each do |meeting| %>
+          <%# <div class="meeting"> %>
+          <p><%#= meeting.name %></p>
+          <%# </div> %>
+        <%# end %>
+      <%# end %>
   </div>
 </div>

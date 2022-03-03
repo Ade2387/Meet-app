@@ -1,0 +1,22 @@
+<div class="background">
+  <H1>Show page meeting: <%= @event.name %></H1>
+
+  <div class="container">
+    <ul>
+      <li>Meeting: <%= @event.name %></li>
+      <li>description: <%= @event.description %></li>
+      <li>duration: <%= @event.duration / 60  %> min</li>
+      <li>start: <%= @event.start_time %></li>
+      <li>end: <%= @event.end_time %></li>
+      <li>created by: <%= @event.user.first_name %></li>
+      <li>attendees: <% @event.user_events.each do |user| %>
+          <%= user.user.first_name %>
+        <% end %></li>
+    </ul>
+    <%= link_to "Edit", edit_user_event_path(current_user, @event) %>
+    <%= link_to "Delete", event_path(@event),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    <%= link_to "Available slots for this meeting", event_slots_path(@event) %>
+  </div>
+</div>
