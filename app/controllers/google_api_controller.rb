@@ -42,9 +42,9 @@ class GoogleApiController < ApplicationController
     @time_max = "2022-03-02T18:00:00+01:00"
 
     # the requests for the different users events within this timeframe (when some1 selects the emails he want to add)
-    @event_list = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max)
-    @event_list2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max)
-    # raise
+    @event_list = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+
   end
 
   def timeslots
@@ -59,16 +59,18 @@ class GoogleApiController < ApplicationController
     # fetching the attendees events whitin the timeframe
     @user1 = []
     @user2 = []
-    @event_list_user1 = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max)
-    @event_list_user2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max)
+    @event_list_user1 = service.list_events("bas_neyt@hotmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
+    @event_list_user2 = service.list_events("olafdery@gmail.com", time_min: @time_min, time_max: @time_max, order_by: "starttime", single_events: true)
 
     # creating the occupied arrays for each user
     @event_list_user1.items.each do |event|
-      @user1.push([event.start.date_time.strftime('%H%M').to_i, event.end.date_time.strftime('%H%M').to_i])
+      @user1.push([event.start.date_time, event.end.date_time])
     end
+
     @event_list_user2.items.each do |event|
-      @user2.push([event.start.date_time.strftime('%H%M').to_i, event.end.date_time.strftime('%H%M').to_i])
+      @user2.push([event.start.date_time, event.end.date_time])
     end
+    # optional - boundries
 
     # combining the user arrays (user1, user2)
     @combined = []
@@ -83,29 +85,44 @@ class GoogleApiController < ApplicationController
     @x = @combined.sort { |time1, time2| time1[0] <=> time2[0] }
 
     # refactoring the overlapping timeframes
-    refactored_cal = []
     index = 0
-    # while index < @x.length
-    #   if @x[index][1] > @x[index + 1][0]
-    #     new_slot = [@x[index][0], @x[index + 1][1]]
-    #     @x.delete_at(index + 1)
-    #     @x.delete_at(index)
-    #     @x.insert(0, new_slot)
-    #     index += 2
 
-    #   elsif @x[index][1] == @x[index + 1][0]
-    #     refactored_cal.push([@x[index][0], @x[index + 1][1]])
-    #     index += 1
-    #     raise
-    #   else
-    #     refactored_cal.push(@x[index])
-    #     refactored_cal.push(@x[index + 1])
-    #     index += 1
-    #   end
-    # end
-    # Combined: [[900, 1030], [1000, 1130], [1200, 1300], [1230, 1430], [1430, 1500], [1600, 1800]]
-    # [[900, 1130], [1200, 1300], [1230, 1430], [1430, 1500], [1600, 1800]]
-    # raise
+    while index < (@x.length - 1)
+      if @x[index][1] >= @x[index + 1][0]
+        if @x[index + 1][1] < @x[index][1]
+          @x.delete_at(index + 1)
+        else
+          new_slot = [@x[index][0], @x[index + 1][1]]
+          set = [index, index + 1]
+          @x.delete_if.with_index { |_, i| set.include? i }
+          @x.insert(index, new_slot)
+        end
+      else
+        index += 1
+      end
+    end
+
+    # calculating free time
+    indexx = 0
+    @free_time = []
+    while @x.length > (@free_time.length + 1)
+      new_frame = [@x[indexx][1], @x[indexx + 1][0]]
+      @free_time.push(new_frame)
+      indexx += 1
+    end
+
+    # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
+    input = 30
+    duration = input * 60
+    timeslots = []
+    @free_time.each do |interval|
+      subinterval = interval[0] + duration
+      while (subinterval) > interval[1]
+        slot = [interval[0], interval[0] + duration]
+        timeslots.push(slot)
+      end
+    end
+
   end
 
   private
