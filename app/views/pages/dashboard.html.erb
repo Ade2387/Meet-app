@@ -18,9 +18,17 @@
   </div>
 
   <div class="container">
-    <%= month_calendar do |date| %>
+    <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
       <%= date %>
+
+      <% meetings.each do |meeting| %>
+        <div>
+          <%= meeting.name %>
+        </div>
+      <% end %>
     <% end %>
+
+
       <%#= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
         <%#= date %>
         <%# meetings.each do |meeting| %>
