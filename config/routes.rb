@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   get '/callback', to: 'google_api#callback', as: 'callback'
   get '/dashboard_events', to: 'google_api#dashboard_events', as: 'dashboard'
   get '/calendars', to: 'google_api#calendars', as: 'calendars'
-
+  get '/timeslots', to: 'google_api#timeslots'
   devise_for :users
   root to: 'pages#home'
   get '/', to: 'pages#homepage'
   get '/dashboard', to: 'pages#dashboard'
+  get '/signup', to: 'registrations#new'
   resources :users do
     resources :events
   end

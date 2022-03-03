@@ -39,9 +39,12 @@
 
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
 .banner-content span{
   position: relative;
   display: inline-flex;
@@ -72,12 +75,15 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+<<<<<<< HEAD
 #discover {
   &::before, &::after {
     content: 'LEARN MORE' !important;
   }
 
 }
+=======
+>>>>>>> master
 .banner-content span a:before{
   color: rgb(251, 251, 251);
   background: #000;
