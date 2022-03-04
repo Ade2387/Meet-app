@@ -1,0 +1,25 @@
+.timeslot {
+  border: solid 2px;
+  text-align: center;
+  border-color: rgb(49, 127, 196);
+  background-color: rgb(148, 205, 255);
+  padding: 10px 25px;
+  margin: 10px;
+  width: 400px;
+  border-radius: 10px;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.timeslotscontainer {
+  padding: 20px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
