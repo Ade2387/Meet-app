@@ -1,4 +1,4 @@
-.col-12 {
+.Show-page{
   padding: 30px;
   border: solid 3px;
   border-radius: 15px;
@@ -10,17 +10,9 @@
   width: 30%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Montserrat', sans-serif;
-  position: center;
+  position: center !important;
 }
 
-.body {
-  background-image: linear-gradient(to top right,#0067FF,#0F56B9) ;
-}
-
-.col-12 h2 {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.col-12 h3 {
-  font-family: 'Montserrat', sans-serif;
+.background {
+  position:center;
 }

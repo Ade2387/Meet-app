@@ -1,11 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color: rgba(0,0,0,0.2);
-  border-bottom: #A3BAC3;
+  border-bottom: black;
 }
 
 .navbar {
-  border-bottom: solid 2px#A3BAC3;
+  border-bottom: solid 2px black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -26,7 +26,7 @@
 
 .navbar-title {
   color: #f7f8f9;
-  font-family: 'Poller One', cursive;
+  font-family: 'Montserrat', sans-serif;
   width: 500px;
   height: 50px;
   text-align: center;
@@ -40,6 +40,7 @@
   display: block;
   flex:auto;
   font-size: 30px;
+  font-weight: 1000;
 }
 .nav-link {
   color:#f3f5f7 !important;
@@ -48,7 +49,7 @@
   top: 30px;
   right: auto;
   position: center;
-  font-family: 'Poller One';
+  font-family: 'Montserrat';
   padding: 1px;
 }
 
