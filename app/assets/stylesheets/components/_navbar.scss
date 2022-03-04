@@ -1,16 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-<<<<<<< HEAD
-  background: #ffffff;
-  border-bottom: black;
-=======
   background-color: rgba(0,0,0,0.2);
-  border-bottom: #A3BAC3;
->>>>>>> 83ccba268137909156b0c8a8490570fdb2f97968
+  border-bottom: black;
 }
 
 .navbar {
-  border-bottom: solid 2px#A3BAC3;
+  border-bottom: solid 2px black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -30,13 +25,8 @@
 }
 
 .navbar-title {
-<<<<<<< HEAD
-  color: #0067FF;
-  font-family: 'Montserrat';
-=======
   color: #f7f8f9;
-  font-family: 'Poller One', cursive;
->>>>>>> 83ccba268137909156b0c8a8490570fdb2f97968
+  font-family: 'Montserrat', sans-serif;
   width: 500px;
   height: 50px;
   text-align: center;
@@ -49,14 +39,8 @@
   margin:auto;
   display: block;
   flex:auto;
-<<<<<<< HEAD
-  font-size: 50px;
-  font-family: 'Montserrat';
-  font-weight: bolder;
-
-=======
   font-size: 30px;
->>>>>>> 83ccba268137909156b0c8a8490570fdb2f97968
+  font-weight: 1000;
 }
 .nav-link {
   color:#f3f5f7 !important;
