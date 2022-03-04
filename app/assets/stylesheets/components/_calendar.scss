@@ -1,3 +1,11 @@
+.calendar-container {
+  flex-grow: 4;
+  margin-left: 20px;
+  border: solid;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
 .simple-calendar {
   table {
     min-height: 80vh;
