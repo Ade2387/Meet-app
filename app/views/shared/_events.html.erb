@@ -6,7 +6,7 @@
         <% current_user.events.each do |event| %>
           <li>Meeting: <%= event.name %>
               - description: <%= event.description %>
-              - duration: <%= event.duration / 60  %> min
+              - duration: <%= event.duration %> min
               - start: <%= event.start_time %>
               - end: <%= event.end_time %>
               - created by: <%= event.user.first_name %>
