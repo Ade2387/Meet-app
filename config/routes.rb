@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard_events', to: 'google_api#dashboard_events', as: 'dashboard'
   get '/calendars', to: 'google_api#calendars', as: 'calendars'
   get '/timeslots', to: 'google_api#timeslots'
+  get '/create_event', to: 'google_api#create_event'
   devise_for :users
   root to: 'pages#home'
   get '/', to: 'pages#homepage'
