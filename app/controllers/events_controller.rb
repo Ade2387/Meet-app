@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   def index
     @events = Event.all
   end
@@ -8,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @employees = User.where(company: current_user.company)
+    @employees = User.where(company: current_user.company).where.not(id: current_user.id)
     @event = Event.new
   end
 
