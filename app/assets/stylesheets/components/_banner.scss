@@ -1,8 +1,9 @@
 .top-container {
   display: flex;
+  justify-content: space-around;
 
   img {
-    height: 800px;
+    height: 850px;
     max-width: auto;
     padding-left: 40px;
   }
@@ -23,7 +24,7 @@
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 10px;
-    font-size: 70px;
+    font-size: 80px;
   }
   h2 {
     font-size: 20px;
@@ -37,6 +38,10 @@
     margin-bottom: 0;
   }
 
+}
+
+.instruction-heading {
+  text-align: center;
 }
 
 .banner-content span{
@@ -92,52 +97,75 @@
   color: white;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  width: 60%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
   margin: 0 auto;
   margin-bottom: 2rem;
   padding-top: 50px;
 
-  justify-content: space-between;
-  h1 {
-    margin-bottom: 40px;
-  }
+
+
   p {
     max-width: 350px;
-
   }
+}
+.instruction-heading {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 70px;
 }
 
 .info-1 {
   display: flex;
+  max-width: 450px;
+  grid-column: 1;
   justify-content: space-between;
-  padding-top: 35px;
-  margin-right: 380px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   span {
     padding-right: 2rem;
-    width: 120px;
+    max-width: fit-content;
+  }
+  p {
+    font-size: x-large;
   }
 }
 
 
 .info-2 {
   display: flex;
+  max-width: 450px;
+  grid-column: 2;
   justify-content: space-between;
-  padding: 35px;
-  margin-left: 380px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   span {
     padding-right: 2rem;
-    width: 120px;
+    max-width: fit-content;
+  }
+  p {
+    font-size: x-large;
   }
 }
 .homebuttons {
 display: flex;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 768px) {
   .top-container, .bottom-container {
     flex-direction: column;
   }
+
+  .bottom-container {
+    grid-template-columns: 1fr;
+  }
+
+  .info-2{
+    grid-column: 1;
+  }
+
 }
