@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/', to: 'pages#homepage'
   get '/dashboard', to: 'pages#dashboard'
-  get '/signup', to: 'registrations#new'
   resources :users do
     resources :events
   end
