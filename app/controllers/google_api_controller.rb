@@ -32,9 +32,13 @@ class GoogleApiController < ApplicationController
   def timeslots
     call_google_api
     # fetching the events from the attendees whitin the specific timeframe
+
+
+
     @time_min = "2022-03-02T8:30:00+01:00"
     @time_max = "2022-03-02T18:00:00+01:00"
     attendees = ["bas_neyt@hotmail.com", "olafdery@gmail.com"]
+
 
     @user1 = []
     @user2 = []
@@ -73,10 +77,10 @@ class GoogleApiController < ApplicationController
       summary: 'Event created from vscode',
       description: 'A chance to hear more about Google\'s developer products.',
       start: Google::Apis::CalendarV3::EventDateTime.new(
-        date_time: '2022-03-5T15:30:00-00:00',
+        date_time: '2022-03-3T15:30:00-00:00',
       ),
       end: Google::Apis::CalendarV3::EventDateTime.new(
-        date_time: '2022-03-5T17:00:00-00:00',
+        date_time: '2022-03-3T17:00:00-00:00',
       ),
       attendees: [
         Google::Apis::CalendarV3::EventAttendee.new(
