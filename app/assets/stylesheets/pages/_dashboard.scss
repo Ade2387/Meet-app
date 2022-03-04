@@ -9,7 +9,7 @@
   background-image: linear-gradient(to top right,#0067FF,#0F56B9);
   color: white;
   max-width: 600px;
-  width: 100%;
+  width: 40%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Roboto';
 }
@@ -40,6 +40,8 @@
 }
 
 .dashboard-container {
-  max-width: 30%;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
