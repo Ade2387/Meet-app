@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #ffffff;
+  background-color: rgba(0,0,0,0.2);
   border-bottom: #A3BAC3;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .navbar-title {
-  color: #0067FF;
+  color: #f7f8f9;
   font-family: 'Poller One', cursive;
   width: 500px;
   height: 50px;
@@ -40,11 +40,9 @@
   display: block;
   flex:auto;
   font-size: 30px;
-  font-family: 'Poller One';
-
 }
 .nav-link {
-  color:#0067FF !important;
+  color:#f3f5f7 !important;
   font-size: 26px;
   text-decoration: none;
   top: 30px;
