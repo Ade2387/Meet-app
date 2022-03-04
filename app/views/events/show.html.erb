@@ -3,15 +3,21 @@
 
   <div class="show-container">
     <ul>
-      <li>Meeting: <%= @event.name %></li>
-      <li>description: <%= @event.description %></li>
-      <li>duration: <%= @event.duration / 60  %> min</li>
-      <li>start: <%= @event.start_time %></li>
-      <li>end: <%= @event.end_time %></li>
-      <li>created by: <%= @event.user.first_name %></li>
-      <li>attendees: <% @event.user_events.each do |user| %>
+      Meeting: <%= @event.name %>
+      <br>
+      description: <%= @event.description %>
+      <br>
+      duration: <%= @event.duration %> min
+      <br>
+      start: <%= @event.start_time %>
+      <br>
+      end: <%= @event.end_time %>
+      <br>
+      created by: <%= @event.user.first_name %>
+      <br>
+      attendees: <% @event.user_events.each do |user| %>
           <%= user.user.first_name %>
-        <% end %></li>
+        <% end %>
     </ul>
     <%= link_to "Edit", edit_user_event_path(current_user, @event) %>
     <%= link_to "Delete", event_path(@event),
