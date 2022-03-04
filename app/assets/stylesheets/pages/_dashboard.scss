@@ -15,7 +15,7 @@
 }
 
 .profile-container h3 {
-  font-family: 'Josefin Sans';
+  font-family: 'Montserrat';
   text-decoration: underline;
 }
 
@@ -40,6 +40,12 @@
 }
 
 .dashboard-container {
-  max-width: 30%;
+  max-width: 100%;
   width: 100%;
+  display: flex;
+}
+
+.conainer {
+  float: right;
+
 }
