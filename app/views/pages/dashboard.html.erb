@@ -7,6 +7,7 @@
         </div>
         <div class="profile-command">
           <div class="profile-text">
+          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
           <p><%= "Email: #{current_user.email}" %></p>
           <p><%= "Member since: #{current_user.created_at}" %></p>
           <a href="/users/edit" class="btn btn-primary">Edit profile</a>
@@ -16,8 +17,11 @@
           </div>
         </div>
       </div>
+      <div class="Meetings">
+        <%= render 'shared/events' %>
+      </div>
     </div>
-    <div class="container">
+    <div class="calendar-container">
       <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
         <%= date %>
 
