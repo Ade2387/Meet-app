@@ -56,6 +56,8 @@ class EventsController < ApplicationController
 
   def timeslots(start_time, end_time, attendees)
     call_google_api
+    start_time = start_time.to_datetime
+    end_time = end_time.to_datetime
     # fetching the events from the attendees whitin the specific timeframe
     # @time_min = "2022-03-02T8:30:00+01:00"
     # @time_min = start_time
@@ -67,17 +69,32 @@ class EventsController < ApplicationController
       x = call_list_events(start_time, end_time, attendee)
       event_lists_attendees.push(x)
     end
+
+    test = []
+    event_lists_attendees.each do |eventlist|
+      test.push(create_array(eventlist))
+    end
+
+
+    while test.length > 1
+      part = merge_arrays(test[0], test[1])
+      set = [0, 1]
+      test.delete_if.with_index { |_, i| set.include? i }
+      test.insert(0, part)
+    end
     raise
 
-
-    @user1 = []
-    @user2 = []
-    @event_list_user1 = call_list_events(@time_min, @time_max, attendees[0])
-    @event_list_user2 = call_list_events(@time_min, @time_max, attendees[1])
+    # test = []
+    # create_array(event_lists_attendees[0])
+    raise
+    # @user1 = []
+    # @user2 = []
+    # @event_list_user1 = call_list_events(@time_min, @time_max, attendees[0])
+    # @event_list_user2 = call_list_events(@time_min, @time_max, attendees[1])
 
     # creating the occupied arrays for each user
-    create_array(@event_list_user1, @user1)
-    create_array(@event_list_user2, @user2)
+    # create_array(@event_list_user1, @user1)
+    # create_array(@event_list_user2, @user2)
 
     # OPTIONAL: boundries
 
@@ -119,13 +136,15 @@ class EventsController < ApplicationController
   end
 
   def call_list_events(time_min, time_max, attendee)
-    @service.list_events(attendee.to_s, time_min: time_min, time_max: time_max, order_by: "starttime", single_events: true)
+    @service.list_events(attendee, time_min: time_min, time_max: time_max, order_by: "starttime", single_events: true)
   end
 
-  def create_array(array, user)
+  def create_array(array)
+    answer = []
     array.items.each do |event|
-      user.push([event.start.date_time, event.end.date_time])
+      answer.push([event.start.date_time, event.end.date_time])
     end
+    return answer
   end
 
   def merge_arrays(array1, array2)
