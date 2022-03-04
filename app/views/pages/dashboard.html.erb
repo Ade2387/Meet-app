@@ -11,8 +11,8 @@
           <p><%= "Member since: #{current_user.created_at}" %></p>
           <a href="/users/edit" class="btn btn-primary">Edit profile</a>
           </div>
-          <div class="create-event-btn">
-            <%= link_to "New Event", new_user_event_path(current_user), class: 'btn btn-outline-warning' %>
+          <div class="button-new-event">
+            <%= link_to "Create a Event", new_user_event_path(current_user), class: 'create-event-btn' %></span>
           </div>
         </div>
       </div>

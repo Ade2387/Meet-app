@@ -32,20 +32,57 @@
   border: solid black
 }
 
+.top-profile-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .avatar-picture img {
   border-radius: 50%;
   height: 120px;
   width: 120px;
   border:solid white;
-  position: absolute;
 }
 
-.top-profile-container {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
+.avatar-picture {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
+.profile-text {
+  padding-top: 20px;
+}
+
+.create-event-btn-container {
+  margin-top: 30px;
+}
+
+.button-new-event {
+  margin-top: 30px;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.7s;
+  background: transparent;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.create-event-btn:hover {
+  filter: brightness(110%);
+}
+
+.create-event-btn {
+  background: linear-gradient( to left, rgb(82, 0, 27) 0%, rgb(163, 0, 54) 8%, rgb(163, 0, 54) 92%, rgb(82,0,27) 100% );
+  padding: 15px 30px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.7s;
+
+}
 
 .dashboard-container {
   width: 100%;
