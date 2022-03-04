@@ -28,8 +28,11 @@ class EventsController < ApplicationController
         emails.push(attendee.email)
       end
       # calling the timeslot method with the required parameters
-      timeslots(@event.start_time, @event.end_time, emails)
-
+      slotarray = timeslots(@event.start_time, @event.end_time, emails, @event.duration)
+      # create the timeslots for the event
+      slotarray.each do |slot|
+        Slot.create(start_time: slot[0].strftime("%H:%M"), end_time: slot[1].strftime("%H:%M"), event_id: @event.id, status: "pending")
+      end
       redirect_to user_events_path(current_user)
     else
       render :new
@@ -54,16 +57,11 @@ class EventsController < ApplicationController
     redirect_to events_path, notice: "Your meeting was successfully deleted."
   end
 
-  def timeslots(start_time, end_time, attendees)
+  def timeslots(start_time, end_time, attendees, duration)
     call_google_api
     start_time = start_time.to_datetime
     end_time = end_time.to_datetime
-    # fetching the events from the attendees whitin the specific timeframe
-    # @time_min = "2022-03-02T8:30:00+01:00"
-    # @time_min = start_time
-    # @time_max = "2022-03-02T18:00:00+01:00"
-    # @time_max = end_time
-    # attendees = ["bas_neyt@hotmail.com", "olafdery@gmail.com"]
+
     event_lists_attendees = []
     attendees.each do |attendee|
       x = call_list_events(start_time, end_time, attendee)
@@ -75,46 +73,19 @@ class EventsController < ApplicationController
       test.push(create_array(eventlist))
     end
 
-
     while test.length > 1
       part = merge_arrays(test[0], test[1])
       set = [0, 1]
       test.delete_if.with_index { |_, i| set.include? i }
       test.insert(0, part)
     end
-    raise
+    test = test[0]
 
-    # test = []
-    # create_array(event_lists_attendees[0])
-    raise
-    # @user1 = []
-    # @user2 = []
-    # @event_list_user1 = call_list_events(@time_min, @time_max, attendees[0])
-    # @event_list_user2 = call_list_events(@time_min, @time_max, attendees[1])
-
-    # creating the occupied arrays for each user
-    # create_array(@event_list_user1, @user1)
-    # create_array(@event_list_user2, @user2)
-
-    # OPTIONAL: boundries
-
-    # combining the user arrays (user1, user2)
-    @combined_array = merge_arrays(@user1, @user2)
-
-    # sorting the subarrays based on the first military time
-    @sorted_array = @combined_array.sort { |time1, time2| time1[0] <=> time2[0] }
-
-    # refactoring the overlapping timeframes
-
-    compact_array(@sorted_array)
-
-    # calculating free time array
-    @free_time = free_time(@sorted_array)
-
-    # creating the timeslots (depending on the duration of the event in our case 30min => .5 hour)
-    # input = 30
-    duration = 30.minutes
-    @timeslots = create_timeslots(duration, @free_time)
+    sorted_test = test.sort { |time1, time2| time1[0] <=> time2[0] }
+    compact_array(sorted_test)
+    free_time_test = free_time(sorted_test)
+    test_slots = create_timeslots(duration.minutes, free_time_test)
+    return test_slots
   end
 
   private
