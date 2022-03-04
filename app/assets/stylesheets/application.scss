@@ -16,7 +16,12 @@
 @import "pages/index";
 @import "pages/dashboard";
 @import "pages/edit";
-
+@import "pages/events";
+@import "pages/home";
+@import "components/alert";
+@import "components/api";
+@import "components/avatar";
+@import "components/banner";
 
 body {
   min-height: 100vh;
