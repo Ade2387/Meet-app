@@ -1,13 +1,11 @@
-<div class="background">
-  <H1>Here are the available slot for the meeting: <%= @event.name %></H1>
+<div class="background container">
+  <H1>Here are the available slots for the meeting: <%= @event.name %></H1>
 
-  <ul>
+  <div class="timeslotscontainer">
+    <h2><b><%= @event.slots.first.start_time.to_datetime.strftime("%B %d") %></b></h2>
     <% @event.slots.each do |slot| %>
-      <li>start: <b><%= slot.start_time.to_datetime.strftime("%H:%M") %></b></li>
-      <li>end: <b><%= slot.end_time.to_datetime.strftime("%H:%M") %></b></li>
-      <li>status: <%= slot.status %></li>
-      <li><br></li>
+      <div class="timeslot">START: <b><%= slot.start_time.to_datetime.strftime("%H:%M") %></b> - END: <b><%= slot.end_time.to_datetime.strftime("%H:%M") %></b></div>
     <% end %>
-  </ul>
+  </div>
 
 </div>
