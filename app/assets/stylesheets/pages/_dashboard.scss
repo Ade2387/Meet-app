@@ -32,12 +32,20 @@
   border: solid black
 }
 
-.profile-container img {
+.avatar-picture img {
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  border:solid black;
+  height: 120px;
+  width: 120px;
+  border:solid white;
+  position: absolute;
 }
+
+.top-profile-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
 
 .dashboard-container {
   width: 100%;
