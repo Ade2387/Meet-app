@@ -9,13 +9,8 @@
     </button>
 
         <div class ="navbar-title">
-
-        <% if user_signed_in?  %>
-
-        <h3><%= "Welcome to Meet, #{current_user.first_name}!"%></h3>
-
-          <% else %>
-          <h3 id=css_cs_cursor> <%="Welcome to Meet, Stranger"%></h3>
+          <% if user_signed_in?  %>
+            <h3><%= "Welcome to Meet, #{current_user.first_name}!"%></h3>
           <% end %>
         </div>
 
