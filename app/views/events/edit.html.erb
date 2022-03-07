@@ -9,7 +9,7 @@
               <%= f.input :duration %>
               <%= f.input :start_time, as: :string, input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
               <%= f.input :end_time, as: :string, input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
-              <%= f.input :users, collection: @employees, label_method: :first_name, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
+              <%= f.input :users, collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
               <%= f.submit "Edit", class: "btn btn-primary" %>
             </div>
           <% end %>
