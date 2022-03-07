@@ -31,7 +31,7 @@ class EventsController < ApplicationController
       slotarray = timeslots(@event.start_time, @event.end_time, emails, @event.duration)
       # create the timeslots for the event
       slotarray.each do |slot|
-        Slot.create(start_time: slot[0].strftime("%H:%M"), end_time: slot[1].strftime("%H:%M"), event_id: @event.id, status: "pending")
+        Slot.create(start_time: slot[0].strftime("%B-%d-%H:%M"), end_time: slot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
       end
       redirect_to "/dashboard"
     else

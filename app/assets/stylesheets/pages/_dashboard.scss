@@ -70,19 +70,6 @@
   touch-action: manipulation;
 }
 
-.create-event-btn:hover {
-  filter: brightness(110%);
-}
-
-.create-event-btn {
-  background: linear-gradient( to left, rgb(82, 0, 27) 0%, rgb(163, 0, 54) 8%, rgb(163, 0, 54) 92%, rgb(82,0,27) 100% );
-  padding: 15px 30px;
-  color: white;
-  border-radius: 20px;
-  transition: 0.7s;
-
-}
-
 .dashboard-container {
   width: 100%;
   display: flex;
