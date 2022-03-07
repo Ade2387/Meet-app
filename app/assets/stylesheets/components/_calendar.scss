@@ -1,7 +1,6 @@
 .calendar-container {
   flex-grow: 4;
   margin-left: 20px;
-  border: solid;
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
@@ -44,5 +43,9 @@
   color: white;
   border-radius: 10px;
   transition: 0.7s;
+  margin-bottom: 10px;
+}
 
+.calendar-title {
+  margin: 15px
 }
