@@ -1,20 +1,57 @@
 .card-container{
-  padding: 30px;
-  border: solid 3px;
+  // padding: 18px;
   border-radius: 15px;
   border-color: white;
   margin: 20px 10px;
   text-align: center;
-  background-color: white;
-  color: rgb(1, 1, 1);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   max-width: 300px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Montserrat', sans-serif;
-  position: center !important;
+  overflow: hidden;
+}
+
+.card-contents {
+  padding: 10px;
+}
+
+.title-discription {
+  padding-left: 19px;
+  padding-right: 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  h1 {
+  font-size: 20px;
+  }
+
+  p {
+  font-size: 13px;
+  }
+}
+
+.dates-links-wrapper {
+  background-color: rgb(255, 255, 255);
+  padding: 12px;
+  color: rgb(92, 113, 221);
+}
+.card-container h1 {
+  font-size: 30px;
 }
 
 .background {
   position:center;
+}
+
+.created-attended-by {
+  padding-bottom: 40px;
+  padding-top: 30px;
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 .dates {
@@ -24,4 +61,5 @@
 .card-links {
 display: flex;
 flex-direction: row;
+justify-content: space-between;
 }
