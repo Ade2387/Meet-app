@@ -1,17 +1,19 @@
 
 .profile-container {
-  padding: 30px;
-  border: solid 3px;
-  border-radius: 15px;
+  padding: 20px;
+  border-right: 3px;
+  border-top: 3px;
+  border-bottom: 3px;
   border-color: white;
-  margin: 20px 10px;
   text-align: center;
-  background-image: linear-gradient(to top right,#0067FF,#0F56B9);
+  background-image: linear-gradient(to top left,#0067FF,#0F56B9);
   color: white;
-  max-width: 600px;
-  width: 40%;
+  max-width: 300px;
+  width: 100%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Montserrat', sans-serif;
+  top: 0;
+  height: 150vh;
 }
 
 .profile-container h3 {
@@ -33,23 +35,23 @@
 }
 
 .top-profile-container {
-  display: flex;
+  display: block;
   justify-content: space-between;
+  align-content: flex-end;
+  height: max-content;
 }
 
 .avatar-picture img {
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border:solid white;
+
 }
 
 .avatar-picture {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 20px;
-}
-
-.profile-text {
 }
 
 .create-event-btn-container {
@@ -70,9 +72,25 @@
   touch-action: manipulation;
 }
 
+.create-event-btn:hover {
+  filter: brightness(110%);
+}
+
+.create-event-btn {
+  background: linear-gradient( to left, rgb(82, 0, 27) 0%, rgb(163, 0, 54) 8%, rgb(163, 0, 54) 92%, rgb(82,0,27) 100% );
+  padding: 15px 30px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.7s;
+  max-width: 150px;
+
+}
+
 .dashboard-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0px;
+  padding-left: 0px;
+  top: 0;
 }
