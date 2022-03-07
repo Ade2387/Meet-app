@@ -33,7 +33,7 @@ class EventsController < ApplicationController
       slotarray.each do |slot|
         Slot.create(start_time: slot[0].strftime("%H:%M"), end_time: slot[1].strftime("%H:%M"), event_id: @event.id, status: "pending")
       end
-      redirect_to user_events_path(current_user)
+      redirect_to "/dashboard"
     else
       render :new
     end
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to user_events_path(current_user), notice: 'Your meeting has been successfully updated.'
+      redirect_to "/dashboard", notice: 'Your meeting has been successfully updated.'
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path, notice: "Your meeting was successfully deleted."
+    redirect_to "/dashboard", notice: "Your meeting was successfully deleted."
   end
 
   def timeslots(start_time, end_time, attendees, duration)
