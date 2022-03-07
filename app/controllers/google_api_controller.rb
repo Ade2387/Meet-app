@@ -10,7 +10,7 @@ class GoogleApiController < ApplicationController
     client.code = params[:code]
     response = client.fetch_access_token!
     session[:authorization] = response
-    redirect_to "/dashboard_events"
+    redirect_to "/dashboard"
   end
 
   def calendars
