@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
   resources :slots, only: [:destroy]
   delete '/events/:id', to: 'events#destroy'
+  patch '/slots/:id', to: 'slots#update_event'
 end
