@@ -1,5 +1,5 @@
 <div class="Show-page">
-  <H1>Show page meeting: <%= @event.name %></H1>
+  <H1><%= @event.name %></H1>
 
   <div class="show-container">
     <ul>
@@ -24,5 +24,12 @@
       method: :delete,
       data: { confirm: "Are you sure?" } %>
     <%= link_to "Available slots for this meeting", event_slots_path(@event) %>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card-contents-top">
+  </div>
+  <div class="card-contents-bottom">
   </div>
 </div>
