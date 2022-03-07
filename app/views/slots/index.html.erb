@@ -4,7 +4,11 @@
   <div class="timeslotscontainer">
     <h2><b><%= @event.slots.first.start_time.to_datetime.strftime("%B %d") %></b></h2>
     <% @event.slots.each do |slot| %>
-      <div class="timeslot">START: <b><%= slot.start_time.to_datetime.strftime("%H:%M") %></b> - END: <b><%= slot.end_time.to_datetime.strftime("%H:%M") %></b></div>
+      <%= simple_form_for(slot) do |f| %>
+        <%= f.input :start_time, :as => :hidden %>
+        <%= f.input :end_time, :as => :hidden %>
+        <%= f.submit "START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+      <% end %>
     <% end %>
   </div>
 
