@@ -1,0 +1,20 @@
+<div class="profile-container">
+  <div class="top-profile-container">
+    <div class="avatar-picture">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+      <% else %>
+        <%= image_tag "avatar_default.png" %>
+      <% end %>
+    </div>
+    <div class="profile-command">
+      <div class="profile-text">
+      <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+      <p><%= "My company: #{current_user.company}" %></p>
+      <p><%= link_to "Dashboard", "/dashboard" %></p>
+      <p><%= link_to "Settings", "/users/edit" %></p>
+      <p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+      </div>
+    </div>
+  </div>
+</div>
