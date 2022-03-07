@@ -1,4 +1,4 @@
-.Show-page{
+.card-container{
   padding: 30px;
   border: solid 3px;
   border-radius: 15px;
@@ -7,7 +7,7 @@
   text-align: center;
   background-color: white;
   color: rgb(1, 1, 1);
-  width: 30%;
+  max-width: 300px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Montserrat', sans-serif;
   position: center !important;
@@ -15,4 +15,13 @@
 
 .background {
   position:center;
+}
+
+.dates {
+  font-size: 15px;
+}
+
+.card-links {
+display: flex;
+flex-direction: row;
 }
