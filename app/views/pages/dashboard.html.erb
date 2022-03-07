@@ -1,37 +1,35 @@
-<div class="background">
-  <div class="dashboard-container">
-    <div class="profile-container">
-      <div class="top-profile-container">
-        <div class="avatar-picture">
-         <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
-        </div>
-        <div class="profile-command">
-          <div class="profile-text">
-          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-          <p><%= "Email: #{current_user.email}" %></p>
-          <p><%= "Member since: #{current_user.created_at}" %></p>
-          <a href="/users/edit" class="btn btn-primary">Edit profile</a>
-          </div>
-          <div class="button-new-event">
-            <%= link_to "Create a Event", new_user_event_path(current_user), class: 'create-event-btn' %></span>
-          </div>
-        </div>
-      </div>
-      <div class="Meetings">
-        <%= render 'shared/events' %>
-      </div>
-    </div>
-    <div class="calendar-container">
-      <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
-        <%= date %>
 
-        <% meetings.each do |meeting| %>
-          <div class="meeting">
-            <p><%= link_to meeting.name, event_path(meeting) %></p>
-            <small><%= meeting.time unless meeting.multi_days? %></small>
+<div class="background">
+    <div class="dashboard-container"> <aside class="position-flexed top-0 left-0 overflow-auto h-100 float-left">
+      <div class="profile-container">
+        <div class="top-profile-container">
+          <div class="avatar-picture">
+          <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
           </div>
+          <div class="profile-command">
+            <div class="profile-text">
+            <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+            <p><%= "Email: #{current_user.email}" %></p>
+            <p><%= "My company: #{current_user.company}" %></p>
+            <a href="/users/edit" class="btn btn-primary">Edit profile</a>
+            </div>
+          </div>
+        </div>
+      </div> </aside>
+      <div class="calendar-container">
+        <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
+          <%= date %>
+
+          <% meetings.each do |meeting| %>
+            <div class="meeting">
+              <p><%= link_to meeting.name, event_path(meeting) %></p>
+              <small><%= meeting.time unless meeting.multi_days? %></small>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-</div>
+   </div>
+  <%# <div class="Meetings"> %>
+          <%# <%= render 'shared/events' %>
+        <%# </div> %>
