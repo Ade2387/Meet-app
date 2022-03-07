@@ -15,20 +15,22 @@
           </div>
         </div>
       </div> </aside>
-      <div class="calendar-container">
-        <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
-          <%= date %>
+      <div>
+        <div class="Meetings">
+          <%= render 'shared/events' %>
+        </div>
+        <div class="calendar-container">
+          <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
+            <%= date %>
 
-          <% meetings.each do |meeting| %>
-            <div class="meeting">
-              <p><%= link_to meeting.name, event_path(meeting) %></p>
-              <small><%= meeting.time unless meeting.multi_days? %></small>
-            </div>
+            <% meetings.each do |meeting| %>
+              <div class="meeting">
+                <p><%= link_to meeting.name, event_path(meeting) %></p>
+                <small><%= meeting.time unless meeting.multi_days? %></small>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-   </div>
-  <%# <div class="Meetings"> %>
-          <%# <%= render 'shared/events' %>
-        <%# </div> %>
+</div>
