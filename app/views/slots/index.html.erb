@@ -1,15 +1,26 @@
-<div class="background container center">
-  <H1>Here are the available slots for the meeting: <%= @event.name %></H1>
-
-  <div class="timeslotscontainer">
-    <h2><b><%= @event.slots.first.start_time.to_datetime.strftime("%B %d") %></b></h2>
-    <% @event.slots.each do |slot| %>
-      <%= simple_form_for(slot) do |f| %>
-        <%= f.input :start_time, :as => :hidden %>
-        <%= f.input :end_time, :as => :hidden %>
-        <%= f.submit "START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
-      <% end %>
-    <% end %>
+<div class="slots-wrapper">
+  <div class="current-meeting">
+    <h1>Current meeting:</h1>
+    <%= image_tag 'divider.png', class: 'divider' %>
+    <H1>Title:<%= @event.name %></H1>
+    <p>Description: <%= @event.description %>  </p>
+      <p> start: <%= @event.start_time %> </p>
+      <p> end: <%= @event.end_time %> </p>
+      <h2>created by:</h2> <%= @event.user.first_name %>
+      <h2>attended by:</h2> <% @event.user_events.each do |user| %>
+          <%= user.user.first_name %>
+        <% end %>
   </div>
-
+  <div class="available-slots">
+    <H1>Available timeslots: </H1>
+    <%= image_tag 'divider.png', class: 'divider' %>
+      <h2><b><%= @event.slots.first.start_time.to_datetime.strftime("%B %d") %></b></h2>
+      <% @event.slots.each do |slot| %>
+        <%= simple_form_for(slot) do |f| %>
+          <%= f.input :start_time, :as => :hidden %>
+          <%= f.input :end_time, :as => :hidden %>
+          <%= f.submit "START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+        <% end %>
+      <% end %>
+  </div>
 </div>

@@ -2,7 +2,7 @@
   border: solid 2px;
   text-align: center;
   border-color: rgb(49, 127, 196);
-  background-color: rgb(148, 205, 255);
+  background-color: rgb(253, 254, 255);
   padding: 10px 25px;
   margin: 10px;
   width: 400px;
@@ -21,6 +21,16 @@
   align-items: center;
 }
 
-h1 {
-  text-align: center;
+.slots-wrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  height: 100vh;
+  border-radius: 3%;
+  padding: 30px;
+}
+
+.divider {
+  height: 10px;
+  width: 100%;
 }
