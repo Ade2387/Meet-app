@@ -12,6 +12,20 @@
 //   float: left;
 // }
 
+.content-container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  height: 80vh;
+  background-color: transparent;
+  border-right: white solid 1px;
+}
+
 .nav-list li{
   position: relative;
   margin: 16px 0;
@@ -29,7 +43,7 @@
   height: 100%;
   width: 134%;
   padding-left: 32px;
-  border-radius: 12px;
+  border-radius: 5px;
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
