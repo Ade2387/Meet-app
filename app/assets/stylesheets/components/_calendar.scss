@@ -59,3 +59,26 @@
 .calendar-title {
   margin: 15px
 }
+
+.card-remove-link {
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: flex;
+  opacity: 0;
+  transform: rotate(45deg);
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.hover {
+  color: white;
+  opacity: 1;
+}
