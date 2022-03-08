@@ -1,25 +1,28 @@
 <div class="slots-wrapper">
   <div class="current-meeting">
-    <h1>Current meeting:</h1>
+    <h1>MEETING INFO:</h1>
     <%= image_tag 'divider.png', class: 'divider' %>
-    <H1>Title:<%= @event.name %></H1>
-    <p>Description: <%= @event.description %>  </p>
-      <p> start: <%= @event.start_time %> </p>
-      <p> end: <%= @event.end_time %> </p>
+    <div class="project-info">
+      <H1><%= @event.name %></H1>
+      <p><%= @event.description %>  </p>
+        <div class="event-dates">
+          <p class="fw-bold"> start: <%= @event.start_time.strftime("%d %B | %H:%M")%> </p>
+          <p class="fw-bold"> end: <%= @event.end_time.strftime("%d %B | %H:%M") %> </p>
+        </div>
+    </div>
       <h2>created by:</h2> <%= @event.user.first_name %>
-      <h2>attended by:</h2> <% @event.user_events.each do |user| %>
+      <h2>attendees:</h2> <% @event.user_events.each do |user| %>
           <%= user.user.first_name %>
         <% end %>
   </div>
   <div class="available-slots">
-    <H1>Available timeslots: </H1>
+    <H1>AVAILABLE TIMESLOTS: </H1>
     <%= image_tag 'divider.png', class: 'divider' %>
-      <h2><b><%= @event.slots.first.start_time.to_datetime.strftime("%B %d") %></b></h2>
       <% @event.slots.each do |slot| %>
         <%= simple_form_for(slot) do |f| %>
           <%= f.input :start_time, :as => :hidden %>
           <%= f.input :end_time, :as => :hidden %>
-         <%= f.submit "#{slot.start_time.to_datetime.strftime('%d %B')} @@@ START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+         <%= f.submit "#{slot.start_time.to_datetime.strftime('%d %B')} | START #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
         <% end %>
       <% end %>
   </div>
