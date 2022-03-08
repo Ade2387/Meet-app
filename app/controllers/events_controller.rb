@@ -1,3 +1,4 @@
+require 'date'
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -28,16 +29,40 @@ class EventsController < ApplicationController
         emails.push(attendee.email)
       end
       # calling the timeslot method with the required parameters
-      slotarray = timeslots(@event.start_time, @event.end_time, emails, @event.duration)
-      # create the timeslots for the event
-      slotarray.each do |slot|
-        Slot.create(start_time: slot[0].strftime("%B-%d-%H:%M"), end_time: slot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
+      # adding the condition if it's multiple days, we want to run it multiple times for each day individualy
+      amount_days = @event.end_time.day - @event.start_time.day
+      if amount_days != 0
+        day_difference = 1
+        days = [[@event.start_time, DateTime.new(@event.start_time.year, @event.start_time.month, @event.start_time.day,@event.end_time.hour, @event.end_time.min, 0, '+1')]]
+
+        (amount_days).times do
+          part1 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.start_time.hour, @event.start_time.min, 0, '+1')
+          part2 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.end_time.hour, @event.end_time.min, 0, '+1')
+          days.push([part1, part2])
+          day_difference += 1
+        end
+
       end
+      all_days_slots = []
+
+      days.each do |day|
+        all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
+      end
+
+      all_days_slots.each do |dayslots|
+        dayslots.each do |dayslot|
+          Slot.create(start_time: dayslot[0].strftime("%B-%d-%H:%M"), end_time: dayslot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
+        end
+      end
+      # slotarray = timeslots(@event.start_time, @event.end_time, emails, @event.duration)
+      # # create the timeslots for the event
+      # slotarray.each do |slot|
+      #   Slot.create(start_time: slot[0].strftime("%B-%d-%H:%M"), end_time: slot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
+      # end
       redirect_to event_slots_path(@event)
     else
       render :new
     end
-
   end
 
   def edit
@@ -70,7 +95,7 @@ class EventsController < ApplicationController
 
     test = []
     event_lists_attendees.each do |eventlist|
-      test.push(create_array(eventlist))
+      test.push(create_array(eventlist, start_time))
     end
 
     while test.length > 1
@@ -82,7 +107,9 @@ class EventsController < ApplicationController
     test = test[0]
 
     sorted_test = test.sort { |time1, time2| time1[0] <=> time2[0] }
+
     compact_array(sorted_test)
+
     free_time_test = free_time(sorted_test)
     test_slots = create_timeslots(duration.minutes, free_time_test)
     return test_slots
@@ -110,11 +137,20 @@ class EventsController < ApplicationController
     @service.list_events(attendee, time_min: time_min, time_max: time_max, order_by: "starttime", single_events: true)
   end
 
-  def create_array(array)
+  def create_array(array, start_time)
     answer = []
+
+    boundrie1 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 7, 59, 0, '+1')
+    boundrie11 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 8, 0, 0, '+1')
+    boundrie2 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 17, 59, 0, '+1')
+    boundrie22 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 18, 0, 0, '+1')
+
+    # array.items[0].start.date_time.day
+    answer.push([boundrie1, boundrie11])
     array.items.each do |event|
       answer.push([event.start.date_time, event.end.date_time])
     end
+    answer.push([boundrie2, boundrie22])
     return answer
   end
 
