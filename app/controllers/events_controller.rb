@@ -33,7 +33,7 @@ class EventsController < ApplicationController
       slotarray.each do |slot|
         Slot.create(start_time: slot[0].strftime("%B-%d-%H:%M"), end_time: slot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
       end
-      redirect_to "/dashboard"
+      redirect_to event_slots_path(@event)
     else
       render :new
     end
