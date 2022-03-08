@@ -19,7 +19,7 @@
         <%= simple_form_for(slot) do |f| %>
           <%= f.input :start_time, :as => :hidden %>
           <%= f.input :end_time, :as => :hidden %>
-          <%= f.submit "START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+         <%= f.submit "#{slot.start_time.to_datetime.strftime('%d %B')} @@@ START: #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
         <% end %>
       <% end %>
   </div>

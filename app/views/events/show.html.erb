@@ -1,9 +1,9 @@
 <div class="card-container">
   <div class="dates-links-wrapper">
     <h3 class="dates">
-      start: <%= @event.start_time %>
+      start: <%= @event.start_time.to_datetime.strftime('%d %B at %H:%M') %>
       <br>
-      end: <%= @event.end_time %>
+      end: <%= @event.end_time.to_datetime.strftime('%d %B at %H:%M') %>
     </h3>
   </div>
 
@@ -16,7 +16,7 @@
     <div class=created-attended-by>
       <h2>created by:</h2> <%= @event.user.first_name %>
 
-      <h2>attended by:</h2> <% @event.user_events.each do |user| %>
+      <h2>invitees:</h2> <% @event.user_events.each do |user| %>
           <%= user.user.first_name %>
         <% end %>
     </div>

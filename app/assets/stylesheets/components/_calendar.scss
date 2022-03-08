@@ -17,18 +17,28 @@
 
 .meeting {
   color: white !important;
-  padding: 8px 24px;
+  padding: 3px 10px;
   border-radius: 4px;
   background: #1EDD88;
   transition: background 0.3s ease;
+  margin-top: 4px;
 }
 
 .meeting:hover {
-  background: #1BCB7F;
+  background: #19ac6c;
   color: white;
 }
 
+.meeting p {
+  margin-bottom: 5px;
+  color: #2d72da
+}
+
 .simple-calendar a {
+  text-decoration: none;
+}
+
+.simple-calendar a:hover {
   text-decoration: none;
 }
 
