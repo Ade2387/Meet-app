@@ -23,8 +23,8 @@
     <%= render 'shared/flashes' %>
      <% if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
      <div class='content-container'>
-        <aside class="sidebar">
-          <div style="display:flex;" >
+         <aside class="sidebar position-flexed top-0 left-0 overflow-auto h-100 float-left">
+          <div style="display:flex;">
             <aside class="position-flexed top-0 left-0 overflow-auto h-100 float-left">
               <%= render 'shared/sidebar' %>
             </aside>
@@ -32,6 +32,7 @@
         </aside>
         <%= yield %>
      </div>
+    <%#= render 'shared/footer' %>
     <% else %>
       <%= yield %>
     <% end %>
