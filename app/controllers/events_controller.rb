@@ -1,3 +1,4 @@
+require 'date'
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -112,9 +113,18 @@ class EventsController < ApplicationController
 
   def create_array(array)
     answer = []
+
+    boundrie1 = DateTime.new(params[:event][:start_time].to_datetime.year, params[:event][:start_time].to_datetime.month, params[:event][:start_time].to_datetime.day, 7, 59, 0, '+1')
+    boundrie11 = DateTime.new(params[:event][:start_time].to_datetime.year, params[:event][:start_time].to_datetime.month, params[:event][:start_time].to_datetime.day, 8, 0, 0, '+1')
+    boundrie2 = DateTime.new(params[:event][:start_time].to_datetime.year, params[:event][:start_time].to_datetime.month, params[:event][:start_time].to_datetime.day, 17, 59, 0, '+1')
+    boundrie22 = DateTime.new(params[:event][:start_time].to_datetime.year, params[:event][:start_time].to_datetime.month, params[:event][:start_time].to_datetime.day, 18, 0, 0, '+1')
+
+    # array.items[0].start.date_time.day
+    answer.push([boundrie1, boundrie11])
     array.items.each do |event|
       answer.push([event.start.date_time, event.end.date_time])
     end
+    answer.push([boundrie2, boundrie22])
     return answer
   end
 
@@ -177,6 +187,7 @@ class EventsController < ApplicationController
         end
       end
     end
+
     return timeslots
   end
 
