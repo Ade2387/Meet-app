@@ -15,6 +15,7 @@
 
     <div class=created-attended-by>
       <h2>created by:</h2> <%= @event.user.first_name %>
+
       <h2>attended by:</h2> <% @event.user_events.each do |user| %>
           <%= user.user.first_name %>
         <% end %>
