@@ -1,18 +1,79 @@
-.Show-page{
-  padding: 30px;
-  border: solid 3px;
+.card-container{
+  // padding: 18px;
   border-radius: 15px;
-  border-color: white;
+  border-color: rgb(10, 29, 239);
   margin: 20px 10px;
   text-align: center;
-  background-color: white;
-  color: black;
-  width: 30%;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  max-width: 300px;
+  box-shadow: 1px 7px 10px rgb(0, 0, 0);
   font-family: 'Montserrat', sans-serif;
-  position: center !important;
+  overflow: hidden;
+  align-self: center;
+
+}
+
+.card-container:hover{
+  box-shadow: 0 0 11px rgb(255, 255, 255);
+  transform: scale(1.08);
+}
+.card-contents {
+  padding: 10px;
+}
+
+.title-discription {
+  padding-left: 19px;
+  padding-right: 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  h1 {
+  font-size: 20px;
+  font-weight: 900;
+  }
+
+  p {
+  font-size: 13px;
+  }
+}
+
+.dates-links-wrapper {
+  background-color: rgb(255, 255, 255);
+  padding: 12px;
+  color: rgb(92, 113, 221);
+}
+.card-container h1 {
+  font-size: 30px;
 }
 
 .background {
   position:center;
+}
+
+.created-attended-by {
+  padding-bottom: 10px;
+  padding-top: 40px;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: rgb(92, 113, 221);
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: blue;
+  }
+}
+
+.dates {
+  font-size: 15px;
+}
+
+.card-links {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 }

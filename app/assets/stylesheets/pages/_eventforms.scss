@@ -1,0 +1,19 @@
+.event-create-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 750px;
+  align-self: center;
+  color: white;
+  padding: 20px;
+}
+
+.event-edit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 750px;
+  align-self: center;
+  color: white !important;
+  padding: 20px;
+}
