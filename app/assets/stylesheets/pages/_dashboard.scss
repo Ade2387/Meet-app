@@ -8,12 +8,12 @@
   text-align: center;
   background-image: linear-gradient(to top left,#0067FF,#0F56B9);
   color: white;
-  max-width: 300px;
+  max-width: 200px;
   width: 100%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
   font-family: 'Montserrat', sans-serif;
   top: 0;
-  height: 150vh;
+  height: 100vh;
 }
 
 .profile-container h3 {
@@ -52,38 +52,6 @@
 .avatar-picture {
   margin-top: 10px;
   margin-left: 20px;
-}
-
-.create-event-btn-container {
-  margin-top: 30px;
-}
-
-.button-new-event {
-  margin-top: 30px;
-  padding: 15px 30px;
-  color: white;
-  border-radius: 20px;
-  transition: 0.7s;
-  background: transparent;
-  cursor: pointer;
-  outline-offset: 4px;
-  transition: filter 250ms;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.create-event-btn:hover {
-  filter: brightness(110%);
-}
-
-.create-event-btn {
-  background: linear-gradient( to left, rgb(82, 0, 27) 0%, rgb(163, 0, 54) 8%, rgb(163, 0, 54) 92%, rgb(82,0,27) 100% );
-  padding: 15px 30px;
-  color: white;
-  border-radius: 20px;
-  transition: 0.7s;
-  max-width: 150px;
-
 }
 
 .dashboard-container {

@@ -22,8 +22,18 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%# <% if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
+      <%# <aside class="sidebar"> %>
 
-    <%= yield %>
+      <%# <div style="display:flex;" > %>
+        <%# <aside class="position-flexed top-0 left-0 overflow-auto h-100 float-left"> %>
+          <%#= render 'shared/sidebar' %>
+        <%# </aside> %>
+        <%= yield %>
+      <%# </div> %>
+    <%# else %>
+      <%#= yield %>
+    <%# end %>
     <%= render 'shared/footer' %>
   </body>
 </html>

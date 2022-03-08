@@ -3,7 +3,7 @@
       <h1>Meetings <br> Were <br> Never <br> Easier</h1>
       <h2>Sit back, relax, and let us do the work!</h2>
 
-      <% if user_signed_in? && !current_page?(controller:"pages", action:"home") %>
+      <% if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
       <% get "pages/dashboard" %>
 
       <% else %>

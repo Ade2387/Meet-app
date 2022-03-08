@@ -1,0 +1,55 @@
+// .sidebar {
+//   margin: 0;
+//   padding: 0;
+//   width: 200px;
+//   background-color: #f1f1f1;
+//   position: fixed;
+//   height: 100%;
+//   overflow: auto;
+//   position: flexed;
+//   top: 0;
+//   left: 0;
+//   float: left;
+// }
+
+.nav-list li{
+  position: relative;
+  margin: 16px 0;
+  list-style: none;
+  left: -37px;
+}
+
+.nav-list li svg {
+  margin-right: 17px;
+  color: white;
+}
+
+.nav-list li a{
+  display: flex;
+  height: 100%;
+  width: 134%;
+  padding-left: 32px;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.nav-list li a:hover{
+  background: #FFF;
+}
+.nav-list li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  // opacity: 0;
+  // pointer-events: none;
+  transition: 0.4s;
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-list li a:hover .links_name,
+.nav-list li a:hover svg{
+  transition: all 0.5s ease;
+  color: #11101D;
+}

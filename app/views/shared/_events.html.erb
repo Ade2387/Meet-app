@@ -32,7 +32,7 @@
             - duration: <%= user_event.event.duration %> min
             - start: <%= user_event.event.start_time %>
             - end: <%= user_event.event.end_time %>
-            - created by: <%= user_event.event.user.first_name %></li>
+            - invited by: <%= user_event.event.user.first_name %></li>
             - attendees: <% user_event.event.user_events.each do |user| %>
               <%= user.user.first_name %>
             <% end %>
