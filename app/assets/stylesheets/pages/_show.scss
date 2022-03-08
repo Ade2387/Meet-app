@@ -2,7 +2,8 @@
   // padding: 18px;
   border-radius: 15px;
   border-color: rgb(10, 29, 239);
-  margin: 20px 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
@@ -11,6 +12,10 @@
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
   align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  flex-grow: 3;
 
 }
 
