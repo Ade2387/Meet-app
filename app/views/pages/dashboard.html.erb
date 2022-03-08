@@ -4,7 +4,7 @@
       <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
         <%= date %>
         <% meetings.each do |meeting| %>
-          <div data-controller="card" data-action="mouseover->card#hoverDelete mouseout->card#hoverDelete">
+          <div class="containerJS" data-controller="card" data-action="mouseover->card#hoverDelete mouseout->card#hoverDelete">
             <%= link_to event_path(meeting) do %>
               <div class="meeting">
                 <p><%= meeting.name %><%#= link_to meeting.name, event_path(meeting) %></p>
