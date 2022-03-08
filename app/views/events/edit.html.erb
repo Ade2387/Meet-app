@@ -1,17 +1,19 @@
 <div class="event-edit-container">
-      <H1>Edit meeting:</H1>
-      <div class="event-container" data-controller="date">
-        <%= simple_form_for([current_user, @event]) do |f| %>
-            <div class=new-car-form>
-              <%= f.input :name %>
-              <%= f.input :description %>
-              <%# duration in sec... need to be in minutes %>
-              <%= f.input :duration %>
-              <%= f.input :start_time, as: :string, input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
-              <%= f.input :end_time, as: :string, input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
-              <%= f.input :users, collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
-              <%= f.submit "Edit", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-      </div>
+  <div class="col-12 col-sm-4">
+        <H1>Edit meeting:</H1>
+        <div class="event-container" data-controller="date">
+          <%= simple_form_for([current_user, @event]) do |f| %>
+              <div class=new-car-form>
+                <%= f.input :name %>
+                <%= f.input :description %>
+                <%# duration in sec... need to be in minutes %>
+                <%= f.input :duration %>
+                <%= f.input :start_time, as: :string, input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
+                <%= f.input :end_time, as: :string, input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
+                <%= f.input :users, collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
+                <%= f.submit "Edit", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+        </div>
+    </div>
 </div>
