@@ -59,3 +59,29 @@
 .calendar-title {
   margin: 15px
 }
+
+.containerJS {
+  position: relative;
+}
+.card-remove-link {
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  // border: 1px solid white;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  display: flex;
+  opacity: 0;
+  transform: rotate(45deg);
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.hover {
+  color: rgb(124, 17, 17);
+  opacity: 1;
+}

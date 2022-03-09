@@ -8,6 +8,23 @@
     padding-left: 40px;
   }
 }
+
+.banner-content H1 {
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 .banner-content {
   display: flex;
   flex-direction: column;
