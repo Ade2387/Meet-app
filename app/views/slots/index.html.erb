@@ -64,7 +64,7 @@
           <span class="icon">
             <ion-icon name="time-outline"></ion-icon>
           </span>
-          <p> <%= @event.start_time.strftime("%B %d, %Y")%> </p>
+          <p> <%= @event.start_time.strftime("%B %d, %Y")%> - <%= @event.end_time.strftime("%B %d, %Y")%></p>
         </div>
         <div class="time">
           <H2> <%= @event.start_time.strftime("%H:%M")%>
