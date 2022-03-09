@@ -19,9 +19,11 @@ class EventsController < ApplicationController
     @event.user = current_user
     @user_ids = params[:event][:users]
     if @event.save
-      @user_ids.each do |id|
-        @user = User.find(id)
-        @event.users << @user
+      if @user_ids.nil? == false
+        @user_ids.each do |id|
+          @user = User.find(id)
+          @event.users << @user
+        end
       end
       # creating the attendees email array
       emails = [@event.user.email]
