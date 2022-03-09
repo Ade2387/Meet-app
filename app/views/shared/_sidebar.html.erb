@@ -21,13 +21,13 @@
 
 <aside>
   <div class="navigation" data-controller="sidebar" data-action="click->sidebar#active">
-  <div class="avatar-picture">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
-    <% else %>
-      <%= image_tag "avatar_default.png" %>
-    <% end %>
-  </div>
+    <div class="avatar-picture">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+      <% else %>
+        <%= image_tag "avatar_default.png" %>
+      <% end %>
+    </div>
     <ul>
       <%# if user_signed_in? && current_page?(controller:"/pages", action:"dashboard") %>
         <li class="list" data-sidebar-target="list">
