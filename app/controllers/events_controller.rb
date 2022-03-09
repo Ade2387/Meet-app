@@ -54,7 +54,7 @@ class EventsController < ApplicationController
           all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
         end
       else
-        all_days_slots.push(timeslots(days[0], days[1], emails, @event.duration))
+        all_days_slots.push(timeslots(days[0].to_datetime, days[1].to_datetime, emails, @event.duration))
       end
 
       all_days_slots.each do |dayslots|
