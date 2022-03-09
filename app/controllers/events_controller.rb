@@ -75,15 +75,19 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @employees = User.where(company: current_user.company)
+    @employees = User.where(company: current_user.company).where.not(id: current_user.id)
   end
 
   def update
-    if @event.update(event_params)
-      redirect_to "/dashboard", notice: 'Your meeting has been successfully updated.'
-    else
-      render :edit
-    end
+    # @new_event = Event.new(event_params)
+    # @new_event.user = current_user
+    # @user_ids = params[:event][:users]
+    create
+    # if @new_event.create(event_params)
+    Event.find(params[:id]).destroy
+    # else
+    #   render :edit
+    # end
   end
 
   def destroy
