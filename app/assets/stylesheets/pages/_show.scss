@@ -2,29 +2,35 @@
   // padding: 18px;
   border-radius: 15px;
   border-color: rgb(10, 29, 239);
-  margin-top: 50px;
-  margin-bottom: 50px;
+  // margin-top: 50px;
   text-align: center;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  max-width: 300px;
+
   box-shadow: 1px 7px 10px rgb(0, 0, 0);
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  flex-grow: 3;
+  display: flex;
+flex-direction: column;
+justify-content: space-between;
+max-height: 500px;
 
+max-width: 350px;
+h1 {
+color: black;
+}
+p {
+color: black;
+}
 }
 
 .card-container:hover{
-  box-shadow: 0 0 11px rgb(255, 255, 255);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
   transform: scale(1.08);
 }
 .card-contents {
   padding: 10px;
+  width: 100%;
 }
 
 .title-discription {

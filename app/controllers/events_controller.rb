@@ -19,9 +19,11 @@ class EventsController < ApplicationController
     @event.user = current_user
     @user_ids = params[:event][:users]
     if @event.save
-      @user_ids.each do |id|
-        @user = User.find(id)
-        @event.users << @user
+      if @user_ids.nil? == false
+        @user_ids.each do |id|
+          @user = User.find(id)
+          @event.users << @user
+        end
       end
       # creating the attendees email array
       emails = [@event.user.email]
@@ -35,18 +37,24 @@ class EventsController < ApplicationController
         day_difference = 1
         days = [[@event.start_time, DateTime.new(@event.start_time.year, @event.start_time.month, @event.start_time.day,@event.end_time.hour, @event.end_time.min, 0, '+1')]]
 
-        (amount_days).times do
+        amount_days.times do
           part1 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.start_time.hour, @event.start_time.min, 0, '+1')
           part2 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.end_time.hour, @event.end_time.min, 0, '+1')
           days.push([part1, part2])
           day_difference += 1
         end
-
+      else
+        days = [@event.start_time, @event.end_time]
       end
+
       all_days_slots = []
 
-      days.each do |day|
-        all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
+      if amount_days != 0
+        days.each do |day|
+          all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
+        end
+      else
+        all_days_slots.push(timeslots(days[0], days[1], emails, @event.duration))
       end
 
       all_days_slots.each do |dayslots|
@@ -54,6 +62,7 @@ class EventsController < ApplicationController
           Slot.create(start_time: dayslot[0].strftime("%B-%d-%H:%M"), end_time: dayslot[1].strftime("%B-%d-%H:%M"), event_id: @event.id, status: "pending")
         end
       end
+
       # slotarray = timeslots(@event.start_time, @event.end_time, emails, @event.duration)
       # # create the timeslots for the event
       # slotarray.each do |slot|
@@ -94,8 +103,9 @@ class EventsController < ApplicationController
     end
 
     test = []
+
     event_lists_attendees.each do |eventlist|
-      test.push(create_array(eventlist, start_time))
+      test.push(create_array(eventlist, start_time, end_time))
     end
 
     while test.length > 1
@@ -112,6 +122,7 @@ class EventsController < ApplicationController
 
     free_time_test = free_time(sorted_test)
     test_slots = create_timeslots(duration.minutes, free_time_test)
+    # raise
     return test_slots
   end
 
@@ -137,13 +148,14 @@ class EventsController < ApplicationController
     @service.list_events(attendee, time_min: time_min, time_max: time_max, order_by: "starttime", single_events: true)
   end
 
-  def create_array(array, start_time)
+  def create_array(array, start_time, end_time)
+
     answer = []
 
-    boundrie1 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 7, 59, 0, '+1')
-    boundrie11 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 8, 0, 0, '+1')
-    boundrie2 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 17, 59, 0, '+1')
-    boundrie22 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, 18, 0, 0, '+1')
+    boundrie1 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, [start_time.to_datetime.hour, 7].max, start_time.to_datetime.hour <= 7 ? 59 : start_time.to_datetime.min, 0, '+1')
+    boundrie11 = DateTime.new(start_time.to_datetime.year, start_time.to_datetime.month, start_time.to_datetime.day, [start_time.to_datetime.hour, 8].max, start_time.to_datetime.hour <= 8 ? 0 : start_time.to_datetime.min, 0, '+1')
+    boundrie2 = DateTime.new(end_time.to_datetime.year, end_time.to_datetime.month, end_time.to_datetime.day, [end_time.to_datetime.hour, 18].min, end_time.to_datetime.hour >= 18 ? 00 : end_time.to_datetime.min, 0, '+1')
+    boundrie22 = DateTime.new(end_time.to_datetime.year, end_time.to_datetime.month, end_time.to_datetime.day, [end_time.to_datetime.hour, 18].min, end_time.to_datetime.hour >= 18 ? 01 : end_time.to_datetime.min, 0, '+1')
 
     # array.items[0].start.date_time.day
     answer.push([boundrie1, boundrie11])
@@ -151,6 +163,7 @@ class EventsController < ApplicationController
       answer.push([event.start.date_time, event.end.date_time])
     end
     answer.push([boundrie2, boundrie22])
+
     return answer
   end
 

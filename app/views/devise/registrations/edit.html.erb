@@ -1,51 +1,111 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-4">
-      <h2>Edit <%= resource_name.to_s.humanize %></h2> <br>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
+<div class="background">
+  <div class="dashboard-container">
+        <div class="navigation" data-controller="sidebar" data-action="click->sidebar#active">
+          <div class="avatar-picture">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+            <% else %>
+              <%= image_tag "avatar_default.png" %>
+            <% end %>
+          </div>
+          <div class="text">
+            <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+            <p><%= "My team: #{current_user.company}" %></p>
+          </div>
+          <ul>
+            <li class="list" data-sidebar-target="list">
+              <b></b>
+              <b></b>
+                <%= link_to "/dashboard" do %>
+                    <span class="icon">
+                      <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Calendar</span>
+                <% end %>
+            </li>
+            <li class="list" data-sidebar-target="list">
+              <b></b>
+              <b></b>
+                <%= link_to "/events" do %>
+                    <span class="icon">
+                      <ion-icon name="time-outline"></ion-icon>
+                    </span>
+                    <span class="title">My meetings</span>
+                <% end %>
+            </li>
+            <li class="list" data-sidebar-target="list">
+              <b></b>
+              <b></b>
+                <%= link_to "/users/edit" do %>
+                    <span class="icon">
+                      <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                    <span class="title">Setting</span>
+                <% end %>
+            </li>
+            <li class="list" data-sidebar-target="list">
+              <b></b>
+              <b></b>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                    <span class="icon">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Log out</span>
+                <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-4">
+              <h2>Edit <%= resource_name.to_s.humanize %></h2> <br>
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                  <% end %>
 
-          <%= f.input :first_name,
-                      hint: "leave it blank if you don't want to change it",
-                      input_html: { autocomplete: "first name" }%>
-          <%= f.input :last_name,
-                      hint: "leave it blank if you don't want to change it",
-                      input_html: { autocomplete: "last name" }%>
-          <%= f.input :company,
-                      hint: "leave it blank if you don't want to change it",
-                      input_html: { autocomplete: "company" }%>
-          <%= f.input :password,
-                      hint: "leave it blank if you don't want to change it",
-                      required: false,
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: false,
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :current_password,
-                      hint: "we need your current password to confirm your changes",
-                      required: true,
-                      input_html: { autocomplete: "current-password" } %>
-          <%= f.input :photo, as: :file %>
+                  <%= f.input :first_name,
+                              hint: "leave it blank if you don't want to change it",
+                              input_html: { autocomplete: "first name" }%>
+                  <%= f.input :last_name,
+                              hint: "leave it blank if you don't want to change it",
+                              input_html: { autocomplete: "last name" }%>
+                  <%= f.input :company,
+                              hint: "leave it blank if you don't want to change it",
+                              input_html: { autocomplete: "company" }%>
+                  <%= f.input :password,
+                              hint: "leave it blank if you don't want to change it",
+                              required: false,
+                              input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :password_confirmation,
+                              required: false,
+                              input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :current_password,
+                              hint: "we need your current password to confirm your changes",
+                              required: true,
+                              input_html: { autocomplete: "current-password" } %>
+                  <%= f.input :photo, as: :file %>
+                </div>
+
+                <div class="form-actions">
+                  <%= f.button :submit, "Update", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+                <br>
+              <h3>To cancel my account:</h3>
+                <br>
+              <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+                  <br>
+              <%= link_to "Back", :back, class: "btn btn-primary" %>
+
+            </div>
+          </div>
         </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Update", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-        <br>
-      <h3>To cancel my account:</h3>
-        <br>
-      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-          <br>
-      <%= link_to "Back", :back, class: "btn btn-primary" %>
-
-    </div>
   </div>
 </div>

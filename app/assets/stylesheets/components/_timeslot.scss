@@ -51,7 +51,7 @@ max-width: 500px;
   padding: 30px;
   color: white;
   flex-grow: 1;
-  max-height: 700px;
+  max-height: 760px;
   p {
     font-size: 20px;
   }
@@ -70,4 +70,15 @@ max-width: 500px;
 .event-dates {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.slots-scroller {
+  height: 480px;
+  overflow: auto;
+  overflow-y: visible;
+}
+
+.all-the-slots {
+display: flex;
+flex-direction: column;
 }

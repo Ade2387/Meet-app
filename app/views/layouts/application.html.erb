@@ -10,32 +10,35 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled</title>
      <%# this is for the footer %>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-      <%= favicon_link_tag asset_path('logo.png') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <%= favicon_link_tag asset_path('logo.png') %>
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-     <% if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
-     <div class='content-container'>
+     <%# if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
+     <%# <div class='content-container'>
          <aside class="sidebar position-flexed top-0 left-0 overflow-auto h-100 float-left">
           <div style="display:flex;">
-            <aside class="position-flexed top-0 left-0 overflow-auto h-100 float-left">
-              <%= render 'shared/sidebar' %>
-            </aside>
+            <aside class="position-flexed top-0 left-0 overflow-auto h-100 float-left"> %>
+              <%#= render 'shared/sidebar' %>
+            <%# </aside>
           </div>
-        </aside>
+        </aside> %>
         <%= yield %>
-     </div>
+     <%# </div> %>
+    <%#= render 'shared/footer' %>
+    <%# else %>
+      <%#= yield %>
+    <%# end %>
     <%= render 'shared/footer' %>
-    <% else %>
-      <%= yield %>
-    <% end %>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
