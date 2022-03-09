@@ -1,34 +1,95 @@
-
-  <div class="slots-wrapper">
-    <div class="current-meeting">
-      <h1>MEETING INFO:</h1>
-      <%= image_tag 'divider.png', class: 'divider' %>
-      <div class="project-info">
-        <H1><%= @event.name %></H1>
-        <p><%= @event.description %>  </p>
+<div class="background">
+  <div class="dashboard-container">
+    <div class="navigation" data-controller="sidebar" data-action="click->sidebar#active">
+      <div class="avatar-picture">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+        <% else %>
+          <%= image_tag "avatar_default.png" %>
+        <% end %>
+      </div>
+      <div class="text">
+        <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+        <p><%= "My team: #{current_user.company}" %></p>
+      </div>
+      <ul>
+        <li class="list" data-sidebar-target="list">
+          <b></b>
+          <b></b>
+          <%= link_to "/dashboard" do %>
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Calendar</span>
+          <% end %>
+        </li>
+        <li class="list" data-sidebar-target="list">
+          <b></b>
+          <b></b>
+          <%= link_to "/events" do %>
+            <span class="icon">
+              <ion-icon name="time-outline"></ion-icon>
+            </span>
+            <span class="title">My meetings</span>
+          <% end %>
+        </li>
+        <li class="list" data-sidebar-target="list">
+          <b></b>
+          <b></b>
+          <%= link_to "/users/edit" do %>
+            <span class="icon">
+              <ion-icon name="settings-outline"></ion-icon>
+            </span>
+            <span class="title">Setting</span>
+          <% end %>
+        </li>
+        <li class="list" data-sidebar-target="list">
+          <b></b>
+          <b></b>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">Log out</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="slots-wrapper">
+      <div class="current-meeting">
+        <h1>MEETING INFO:</h1>
+        <%= image_tag 'divider.png', class: 'divider' %>
+        <div class="project-info">
+          <H1><%= @event.name %></H1>
+          <p><%= @event.description %>  </p>
           <div class="event-dates">
             <p class="fw-bold"> start: <%= @event.start_time.strftime("%d %B | %H:%M")%> </p>
             <p class="fw-bold"> end: <%= @event.end_time.strftime("%d %B | %H:%M") %> </p>
           </div>
+        </div>
+        <h2>created by:</h2>
+ <%= @event.user.first_name %>
+        <h2>attendees:</h2>
+ <% @event.user_events.each do |user| %>
+          <%= user.user.first_name %>
+        <% end %>
       </div>
-        <h2>created by:</h2> <%= @event.user.first_name %>
-        <h2>attendees:</h2> <% @event.user_events.each do |user| %>
-            <%= user.user.first_name %>
-          <% end %>
-    </div>
-    <div class="available-slots">
-      <H1>AVAILABLE TIMESLOTS: </H1>
-      <%= image_tag 'divider.png', class: 'divider' %>
-      <div class="slots-scroller">
-        <div class="all-the-slots">
-          <% @event.slots.each do |slot| %>
-            <%= simple_form_for(slot) do |f| %>
-              <%= f.input :start_time, :as => :hidden %>
-              <%= f.input :end_time, :as => :hidden %>
-              <%= f.submit "#{slot.start_time.to_datetime.strftime('%d %B')} | START #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+      <div class="available-slots">
+        <H1>AVAILABLE TIMESLOTS: </H1>
+        <%= image_tag 'divider.png', class: 'divider' %>
+        <div class="slots-scroller">
+          <div class="all-the-slots">
+            <% @event.slots.each do |slot| %>
+              <%= simple_form_for(slot) do |f| %>
+                <%= f.input :start_time, :as => :hidden %>
+                <%= f.input :end_time, :as => :hidden %>
+                <%= f.submit "#{slot.start_time.to_datetime.strftime('%d %B')} | START #{slot.start_time.to_datetime.strftime('%H:%M')} - END: #{slot.end_time.to_datetime.strftime('%H:%M')}", class: "timeslot" %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+>>>>>>> master

@@ -116,10 +116,29 @@
 
 .new-event-form {
   max-width: 100%;
-  width:50vh;
+  width:100%;
 }
 
 .event-edit-container {
   flex-grow: 4 !important;
   flex-direction: row-reverse;
+}
+
+.new-events {
+  padding: 30px;
+  border: solid 3px;
+  border-radius: 15px;
+  border-color: white;
+  margin: 20px 10px;
+  text-align: center;
+  background-color: white;
+  color: black;
+  width: fit-content;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  font-family: 'Montserrat', sans-serif;
+  position: center;
+}
+
+.new-events .mb-3 {
+  text-align: left;
 }
