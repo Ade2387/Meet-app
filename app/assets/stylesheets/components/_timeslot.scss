@@ -1,12 +1,12 @@
 .timeslot {
-  background: rgb(24, 196, 119);
+  background: #1EDD88;
   padding: 10px 25px;
   color: white;
   border-radius: 10px;
   transition: 0.7s;
   margin-bottom: 10px;
   &:hover {
-    filter: brightness(160%);
+    filter: brightness(130%);
     color: rgb(0, 0, 0);
   }
 }

@@ -22,14 +22,14 @@
 }
 
 .profile-container .btn-primary {
-  background-color: #0D6EFD;
+  background-color: #FFE900;
   color: white;
   border-radius: 20px;
   transition: 0.7s;
 }
 
 .profile-container .btn-primary:hover {
-  color: #0067FF;
+  color: #FFE900;
   background-color: white;
   border: solid black
 }
@@ -55,4 +55,7 @@
   padding: 0px;
   padding-left: 0px;
   top: 0;
+}
+.calendar-container {
+  background-color: whitesmoke;
 }
