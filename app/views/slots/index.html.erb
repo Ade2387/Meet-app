@@ -80,6 +80,7 @@
         <div class="slots-scroller">
           <div class="all-the-slots">
             <% @event.slots.each do |slot| %>
+            <% raise %>
               <%= simple_form_for(slot) do |f| %>
                 <%= f.input :start_time, :as => :hidden %>
                 <%= f.input :end_time, :as => :hidden %>

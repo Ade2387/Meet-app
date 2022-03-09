@@ -75,7 +75,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @employees = User.where(company: current_user.company)
+    @employees = User.where(company: current_user.company).where.not(id: current_user.id)
   end
 
   def update
