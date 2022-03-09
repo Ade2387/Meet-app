@@ -68,9 +68,9 @@
           </div>
         </div>
         <h2>created by:</h2>
- <%= @event.user.first_name %>
+        <%= @event.user.first_name %>
         <h2>attendees:</h2>
- <% @event.user_events.each do |user| %>
+        <% @event.user_events.each do |user| %>
           <%= user.user.first_name %>
         <% end %>
       </div>
@@ -93,4 +93,3 @@
     </div>
   </div>
 </div>
->>>>>>> master

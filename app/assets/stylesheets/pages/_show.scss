@@ -88,3 +88,12 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 }
+
+.mymeetings-container-show {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 35px;
+  flex-wrap: wrap;
+}

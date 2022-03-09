@@ -17,7 +17,7 @@
 .created-meetings-cards {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 40px;
   justify-content: left;
 }
 .invitemeeting-container {
@@ -30,6 +30,12 @@
   font-family: 'Montserrat', sans-serif;
   background-color: white;
   color: black;
+}
+
+.events-scroller {
+  height: 480px;
+  overflow: auto;
+  overflow-x: visible;
 }
 
 
