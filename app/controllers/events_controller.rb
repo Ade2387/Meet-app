@@ -19,9 +19,11 @@ class EventsController < ApplicationController
     @event.user = current_user
     @user_ids = params[:event][:users]
     if @event.save
-      @user_ids.each do |id|
-        @user = User.find(id)
-        @event.users << @user
+      if @user_ids.nil? == false
+        @user_ids.each do |id|
+          @user = User.find(id)
+          @event.users << @user
+        end
       end
       # creating the attendees email array
       emails = [@event.user.email]
@@ -35,18 +37,24 @@ class EventsController < ApplicationController
         day_difference = 1
         days = [[@event.start_time, DateTime.new(@event.start_time.year, @event.start_time.month, @event.start_time.day,@event.end_time.hour, @event.end_time.min, 0, '+1')]]
 
-        (amount_days).times do
+        amount_days.times do
           part1 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.start_time.hour, @event.start_time.min, 0, '+1')
           part2 = DateTime.new(@event.start_time.year, @event.start_time.month, (@event.start_time.day + day_difference),@event.end_time.hour, @event.end_time.min, 0, '+1')
           days.push([part1, part2])
           day_difference += 1
         end
-
+      else
+        days = [@event.start_time, @event.end_time]
       end
+
       all_days_slots = []
 
-      days.each do |day|
-        all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
+      if days.length > 2
+        days.each do |day|
+          all_days_slots.push(timeslots(day[0], day[1], emails, @event.duration))
+        end
+      else
+        all_days_slots.push(timeslots(days[0], days[1], emails, @event.duration))
       end
 
       all_days_slots.each do |dayslots|
