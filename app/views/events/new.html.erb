@@ -61,13 +61,13 @@
             <div class="event-container" data-controller="date">
               <%= simple_form_for([current_user, @event]) do |f| %>
                 <div class=new-event-form>
-                  <%= f.input :name %>
+                  <%= f.input :name, label: "Title"%>
                   <%= f.input :description %>
                   <%# duration in sec... need to be in minutes %>
-                  <%= f.input :duration %>
-                  <%= f.input :start_time, as: :string, input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
-                  <%= f.input :end_time, as: :string, input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
-                  <%= f.input :users, collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
+                  <%= f.input :duration, label: "Duration in min"%>
+                  <%= f.input :start_time, as: :string, label: "Start", input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
+                  <%= f.input :end_time, as: :string, label: "End", input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
+                  <%= f.input :users, label: "Invitees", collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
                   <%= f.submit "Create meeting", class: "btn btn-primary" %>
                 </div>
               <% end %>
