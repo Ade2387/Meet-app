@@ -23,7 +23,7 @@
   left: 0px;
   height: 80vh;
   background-color: transparent;
-  border-right: white solid 1px;
+  // border-right: white solid 2px;
 }
 
 .nav-list li{
@@ -66,4 +66,7 @@
 .nav-list li a:hover svg{
   transition: all 0.5s ease;
   color: #11101D;
+}
+.top-profile-container {
+  position: sticky;
 }
