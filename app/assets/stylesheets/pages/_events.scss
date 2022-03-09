@@ -4,17 +4,22 @@
 }
 
 .mymeetings-container  {
-  flex-grow: 4;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
   box-shadow: 0px 0px 19px -7px #000000;
   font-family: 'Montserrat', sans-serif;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: black;
 }
 
+.created-meetings-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: left;
+}
 .invitemeeting-container {
   flex-grow: 4;
   margin: 20px;
