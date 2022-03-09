@@ -57,47 +57,74 @@
     </div>
 
     <div class="card-show">
-      <H1><%= @event.name %></H1>
-      <p><%= @event.description %></p>
-      <h2>created by:</h2>
-      <p><%= @event.user.first_name %></p>
-      <h2>invitees:</h2>
-      <% @event.user_events.each do |user| %>
-        <%= user.user.first_name %>
-      <% end %>
-      <h3>Start at:</h3>
-      <p><%= @event.start_time.to_datetime.strftime('%d %B at %H:%M') %></p>
-      <h3>End at:</h3>
-      <p><%= @event.end_time.to_datetime.strftime('%d %B at %H:%M') %></p>
-      <ul>
-        <li>
-          <%= link_to edit_user_event_path(current_user, @event) do %>
-            <span class="icon">
-              <ion-icon name="create-outline"></ion-icon>
-            </span>
-            <span class="title">Edit</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to event_slots_path(@event) do %>
-            <span class="icon">
-              <ion-icon name="code-working-outline"></ion-icon>
-            </span>
-            <span class="title">Find a slot</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to event_path(@event),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } do %>
-            <span class="icon">
-              <ion-icon name="trash-outline"></ion-icon>
-            </span>
-            <span class="title">Delete</span>
-          <% end %>
-        </li>
+        <div class="title">
+          <H1><%= @event.name %></H1>
+        </div>
+        <div class="date">
+          <span class="icon">
+            <ion-icon name="time-outline"></ion-icon>
+          </span>
+          <p> <%= @event.start_time.strftime("%B %d, %Y")%> </p>
+        </div>
+        <div class="time">
+          <H2> <%= @event.start_time.strftime("%H:%M")%>
+            - <%= @event.end_time.strftime("%H:%M") %> </H2>
+        </div>
+        <div class="description">
+          <span class="icon">
+            <ion-icon name="list-outline"></ion-icon>
+          </span>
+          <p>
+            <% if !@event.description? %>
+              Add description
+            <% else %>
+            <%= @event.description %>
+            <% end %>
+          </p>
+        </div>
+        <div class="attendees">
+          <p>Attendees:</p>
+          <ul>
+            <% @event.user_events.each do |user| %>
+              <li><%= user.user.first_name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="organiser">
+          <p>Organised by:
+          <%= @event.user.first_name %></p>
+        </div>
+        <ul id="links">
+          <li>
+            <%= link_to edit_user_event_path(current_user, @event) do %>
+                <span class="icon">
+                  <ion-icon name="create-outline"></ion-icon>
+                </span>
+                <span class="link">Edit</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to event_slots_path(@event) do %>
+              <span class="icon">
+                <ion-icon name="code-working-outline"></ion-icon>
+              </span>
+              <span class="link">Find a slot</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to event_path(@event),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } do %>
+              <span class="icon">
+                <ion-icon name="trash-outline"></ion-icon>
+              </span>
+              <span class="link">Delete</span>
+            <% end %>
+          </li>
       </ul>
     </div>
+
+
 
 
 

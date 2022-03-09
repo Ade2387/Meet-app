@@ -1,14 +1,114 @@
 .card-show {
   margin-top: 40px;
   margin-bottom: 40px;
-  width: auto;
+  min-width: 300px;
   height: auto;
   border-radius: 30px;
   background: #fff;
   box-shadow: 15px 15px 30px #bebebe,
               -15px -15px 30px #ffffff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 20px;
+
  }
 
+
+//  .card-show {
+//   color: rgb(0, 0, 0);
+//   background-color: rgb(255, 255, 255);
+//   border-radius: 15px;
+//   margin: 20px 10px;
+//   box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+//   padding: 30px;
+//   text-align: center;
+//   height: auto;
+//   max-width: 420px;
+//   font-family: 'Poppins', sans-serif;
+// }
+.card-show .title {
+  margin-top: 20px;
+  border-bottom: solid 2px gray;
+  padding-bottom: 5px;
+  color: rgb(66, 27, 27);
+}
+
+.card-show .date {
+  margin-top: 30px;
+  display: flex;
+  .icon {
+    line-height: 32px;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+
+  }
+}
+
+.card-show .time {
+  text-align: left;
+  margin-top: 10Px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px gray;
+}
+
+.card-show .description {
+  margin-top: 15px;
+  display: flex;
+  text-align: justify;
+  .icon {
+  line-height: 35px;
+  margin-right: 20px;
+  font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+.card-show .attendees {
+  display: flex;
+  text-align: left;
+  text-align: start;
+  margin-top: 20px;
+  border-top: solid 1px gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  p {
+    font-size: 15px;
+  }
+  ul li {
+    list-style: none;
+    padding-left: -1rem !important;
+  }
+}
+
+.card-show .organiser {
+  display: flex;
+  text-align: left;
+  text-align: start;
+  margin-top: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  p {
+    font-size: 12px;
+  }
+}
+
+.card-show #links {
+align-content: left !important;
+display: flex;
+}
+.card-show li {
+  list-style: none;
+  margin: 5px;
+}
+.card-show .icon {
+  color: #3D75C1;
+  font-size: 20px;
+}
 
 // .card-container{
 //   // padding: 18px;
