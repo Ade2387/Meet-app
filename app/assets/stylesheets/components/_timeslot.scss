@@ -1,28 +1,136 @@
-.timeslot {
-  background: rgb(24, 196, 119);
-  padding: 10px 25px;
-  color: white;
-  border-radius: 10px;
-  transition: 0.7s;
-  margin-bottom: 10px;
-  &:hover {
-    filter: brightness(160%);
-    color: rgb(0, 0, 0);
+// .timeslot {
+//   background: rgb(24, 196, 119);
+//   padding: 10px 25px;
+//   color: white;
+//   border-radius: 10px;
+//   transition: 0.7s;
+//   margin-bottom: 10px;
+//   &:hover {
+//     filter: brightness(160%);
+//     color: rgb(0, 0, 0);
+//   }
+// }
+
+
+.current-meeting {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin: 20px 10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  padding: 30px;
+  text-align: center;
+  height: auto;
+  max-width: 420px;
+  font-family: 'Poppins', sans-serif;
+}
+.current-meeting .title {
+  margin-top: 20px;
+  border-bottom: solid 2px gray;
+  padding-bottom: 5px;
+  color: rgb(66, 27, 27);
+}
+
+.current-meeting .date {
+  margin-top: 30px;
+  display: flex;
+  .icon {
+    line-height: 32px;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+
   }
 }
 
-.current-meeting {
-color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);
-border-radius: 15px;
-margin: 20px 10px;
-box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-padding: 30px;
-text-align: center;
-max-width: 500px;
+.current-meeting .time {
+  text-align: left;
+  margin-top: 10Px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px gray;
 }
 
-.available-slots {
+.current-meeting .description {
+  margin-top: 15px;
+  display: flex;
+  text-align: justify;
+  .icon {
+  line-height: 35px;
+  margin-right: 20px;
+  font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+.current-meeting .attendees {
+  display: flex;
+  text-align: left;
+  text-align: start;
+  margin-top: 20px;
+  border-top: solid 1px gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  p {
+    font-size: 15px;
+  }
+  ul li {
+    list-style: none;
+    padding-left: -1rem !important;
+  }
+}
+
+.current-meeting .organiser {
+  display: flex;
+  text-align: left;
+  text-align: start;
+  margin-top: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  p {
+    font-size: 12px;
+  }
+}
+
+.timeslot {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  color: #FFFFFF;
+  background-color: #1DC9A0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: all 0.15s linear;
+}
+
+.timeslot:hover {
+  background-color: rgba(29, 201, 160, 0.08);
+  border-color: #1DC9A0;
+  color: #1DC9A0;
+  transform: translateY(-5px) scale(1.05);
+}
+
+.timeslot:active {
+  background-color: transparent;
+  border-color: #1DC9A0;
+  color: #1DC9A0;
+  transform: translateY(5px) scale(0.95);
+}
+
+.timeslot:disabled {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #8E8E93;
+  border-color: #8E8E93;
+}
+
+.slots {
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
@@ -31,22 +139,21 @@ max-width: 500px;
   padding: 30px;
   text-align: center;
   max-width: 500px;
-}
-.timeslotscontainer {
-  padding: 20px 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2 {
-    font-size: 20px;
+  H1 {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-bottom: solid 2px gray;
+    padding-bottom: 5px;
+    color: rgb(66, 27, 27);
   }
 }
+
 
 .slots-wrapper {
   display: flex;
   justify-content: space-around;
-  height: 100vh;
+  height: 99vh;
   border-radius: 3%;
   padding: 30px;
   background: #e0e0e0;
@@ -73,12 +180,13 @@ max-width: 500px;
 }
 
 .slots-scroller {
-  height: 480px;
+  height: 470px;
   overflow: auto;
   overflow-y: visible;
 }
 
 .all-the-slots {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
