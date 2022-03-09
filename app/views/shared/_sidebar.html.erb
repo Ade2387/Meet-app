@@ -28,6 +28,10 @@
         <%= image_tag "avatar_default.png" %>
       <% end %>
     </div>
+    <div class="text">
+      <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+      <p><%= "My team: #{current_user.company}" %></p>
+    </div>
     <ul>
       <%# if user_signed_in? && current_page?(controller:"/pages", action:"dashboard") %>
         <li class="list" data-sidebar-target="list">
@@ -111,7 +115,7 @@
           <div class="profile-command">
             <div class="profile-text"> %>
               <%# <h4><%= current_user.first_name %> <%#= current_user.last_name %></h4>
-              <%# <p><%= "My company: #{current_user.company}" %></p>
+              <%# <p><%= "My team: #{current_user.company}" %></p>
               <%# <ul class="nav-list">
                 <li> %>
                   <%#= link_to "/dashboard" do %>
