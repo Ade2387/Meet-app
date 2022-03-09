@@ -5,8 +5,10 @@
       Never <br>
       Easier</h1>
     <h2>Sit back, relax, and let us do the work!</h2>
-    <% if user_signed_in? && !current_page?(controller:"/pages", action:"home") %>
-      <% get "pages/dashboard" %>
+    <% if user_signed_in? && current_page?(controller:"/pages", action:"home") %>
+      <div class="homebuttons">
+        <span><a href="#bottom-container1" id='discover'></a></span>
+      </div>
     <% else %>
       <div class="homebuttons">
         <span><a href=""><%= link_to"", new_user_registration_path%></a></span>
