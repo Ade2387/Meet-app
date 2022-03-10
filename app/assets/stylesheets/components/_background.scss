@@ -1,5 +1,18 @@
 .background {
   min-height: 100vh;
-  background: #e0e0e0;
+  // border-top-left-radius: 30%;
+  background-color: #1d348a;
+}
 
+.container-backround {
+  background-color:#1d348a;
+  margin-left:30;
+}
+
+.calendar-border {
+  flex-grow: 1;
+  background: #e0e0e0;
+  border-radius:  15px 0 0 0;
+  display: flex;
+  justify-content: center;
 }
