@@ -31,6 +31,13 @@
   padding-top: 40px;
 }
 
+.avatar-picture img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border:solid white;
+}
+
 .navigation .text {
   position: absolute;
   text-align: center;
