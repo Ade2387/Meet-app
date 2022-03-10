@@ -120,13 +120,13 @@ class EventsController < ApplicationController
     end
     test = test[0]
 
-    sorted_test = test.sort { |time1, time2| time1[0] <=> time2[0] }
+    sorted_test = test.select { |time| time[0].present? }.sort { |time1, time2| time1[0] <=> time2[0] }
 
     compact_array(sorted_test)
 
     free_time_test = free_time(sorted_test)
     test_slots = create_timeslots(duration.minutes, free_time_test)
-    # raise
+
     return test_slots
   end
 
