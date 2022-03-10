@@ -4,7 +4,7 @@
     <title>The change you wanted was rejected (422)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
-      .rails-default-error-page {
+      .error {
         background-color: rgb(66, 135, 245);
         color: white;
         text-align: center;
@@ -12,13 +12,13 @@
         margin: 0;
       }
 
-      .rails-default-error-page h1 {
+      .error h1 {
         font-size: 100%;
         color: white;
         line-height: 1.5em;
       }
 
-      .rails-default-error-page div.dialog > p {
+      .error div.text > p {
         margin: 0 0 1em;
         padding: 1em;
         background-color: rgb(42, 42, 69);
@@ -43,17 +43,17 @@
     </style>
   </head>
 
-  <body class="rails-default-error-page">
+  <body class="error">
     <!-- This file lives in public/422.html -->
-    <div class="dialog">
+    <div class="text">
       <div class="all-dialog">
         <h1>Error 422</h1>
-        <h1>I don't think we get what you are looking for.</h1>
+        <h1>Congrats You've just been lost. I don't think we get what you are looking for.</h1>
       </div>
       <img
         class="image-error"
         src="https://c4.wallpaperflare.com/wallpaper/494/255/673/windows-10-errors-windows-errors-humor-emoji-hd-wallpaper-preview.jpg"
-        alt=""
+        alt="ERROR 422"
       />
     </div>
   </body>
