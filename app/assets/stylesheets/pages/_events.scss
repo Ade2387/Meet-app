@@ -3,15 +3,16 @@
   flex-direction: row;
   flex-grow: 1;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .team-card {
   margin-top: 50px;
-  min-width: 260px;
-  max-width: 400px;
-  height: 550px;
+  margin-bottom: 50px;
+  // min-width: 260px;
+  // max-width: 400px;
+  height: 535px;
   border-radius: 30px;
   background: #fff;
   box-shadow: 15px 15px 30px #bebebe,
@@ -19,22 +20,27 @@
   font-family: 'Poppins', sans-serif;
   text-align: center;
   overflow: hidden;
-  h1 {
-    padding-bottom: 20px;
-    padding-top: 15px;
-    font-size: 35px;
-    border-bottom: 5px double grey;
-  }
   p {
     padding-top: 15px;
   }
+  img {
+    max-height:  275px;
+    background-size: cover
+  }
 }
 
-.team-card-picture {
-img {
-  max-height: 350px;
-  padding-bottom: 10px;
-}
+.team-card .name {
+  margin: 15px 15px 0px 15px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px gray;
 }
 
-// navbar&sidebar color: #1d348a;
+.team-card .name h1 {
+  font-size: 20px;
+}
+
+.team-card .mail {
+  margin-top: 35px;
+  font-size: 15px;
+
+}
