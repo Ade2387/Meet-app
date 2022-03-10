@@ -83,3 +83,19 @@
 .new-events .mb-3 {
   text-align: left;
 }
+
+.create-meeting-btn:hover {
+  filter: brightness(110%);
+  color: #2d72da;
+}
+
+.create-meeting-btn {
+  // background: linear-gradient( to left, rgb(82, 0, 27) 0%, rgb(163, 0, 54) 8%, rgb(163, 0, 54) 92%, rgb(82,0,27) 100% );
+  background: rgb(9, 189, 185);
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+  transition: 0.7s;
+  margin-bottom: 10px;
+  border: none;
+}
