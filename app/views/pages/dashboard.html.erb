@@ -1,75 +1,77 @@
 <div class="background">
-  <div class="dashboard-container">
-    <div class="navigation" data-controller="sidebar" data-action="click->sidebar#active">
-      <div class="avatar-picture">
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
-        <% else %>
-          <%= image_tag "avatar_default.png" %>
-        <% end %>
-      </div>
-      <div class="text">
-        <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-        <p>My team: <%= link_to current_user.company, events_path, class:"team" %></p>
-      </div>
-      <ul>
-        <li class="list" data-sidebar-target="list">
-          <b></b>
-          <b></b>
-          <%= link_to "/dashboard" do %>
-            <span class="icon">
-              <ion-icon name="home-outline"></ion-icon>
-            </span>
-            <span class="title">Calendar</span>
+  <div class="container-background">
+    <div class="dashboard-container">
+      <div class="navigation" data-controller="sidebar" data-action="click->sidebar#active">
+        <div class="avatar-picture">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face %>
+          <% else %>
+            <%= image_tag "avatar_default.png" %>
           <% end %>
-        </li>
-        <%# <li class="list" data-sidebar-target="list">
-          <b></b>
-          <b></b> %>
-            <%#= link_to "/events" do %>
-                <%# <span class="icon">
-                  <ion-icon name="time-outline"></ion-icon>
-                </span>
-                <span class="title">My meetings</span> %>
-            <%# end %>
-        <%# </li> %>
-        <li class="list" data-sidebar-target="list">
-          <b></b>
-          <b></b>
-          <%= link_to "/users/edit" do %>
-            <span class="icon">
-              <ion-icon name="settings-outline"></ion-icon>
-            </span>
-            <span class="title">Setting</span>
-          <% end %>
-        </li>
-        <li class="list" data-sidebar-target="list">
-          <b></b>
-          <b></b>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <span class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
-            </span>
-            <span class="title">Log out</span>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-    <div class="calendar-container">
-      <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
-        <%= date %>
-        <% meetings.each do |meeting| %>
-          <div class="containerJS" data-controller="card" data-action="mouseover->card#hoverDelete mouseout->card#hoverDelete">
-            <%= link_to event_path(meeting) do %>
-              <div class="meeting">
-                <p><%= meeting.name %><%#= link_to meeting.name, event_path(meeting) %></p>
-                <small><%= meeting.time unless meeting.multi_days? %></small>
-              </div>
+        </div>
+        <div class="text">
+          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+          <p>My team: <%= link_to current_user.company, events_path, class:"team" %></p>
+        </div>
+        <ul>
+          <li class="list" data-sidebar-target="list">
+            <b></b>
+            <b></b>
+            <%= link_to "/dashboard" do %>
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="title">Calendar</span>
             <% end %>
-            <span><%= link_to "+", event_path(meeting), method: :delete, data: { confirm: "Are you sure?", "card-target"=>"delete"}, class: "card-remove-link"%></span>
-          </div>
+          </li>
+          <%# <li class="list" data-sidebar-target="list">
+            <b></b>
+            <b></b> %>
+              <%#= link_to "/events" do %>
+                  <%# <span class="icon">
+                    <ion-icon name="time-outline"></ion-icon>
+                  </span>
+                  <span class="title">My meetings</span> %>
+              <%# end %>
+          <%# </li> %>
+          <li class="list" data-sidebar-target="list">
+            <b></b>
+            <b></b>
+            <%= link_to "/users/edit" do %>
+              <span class="icon">
+                <ion-icon name="settings-outline"></ion-icon>
+              </span>
+              <span class="title">Setting</span>
+            <% end %>
+          </li>
+          <li class="list" data-sidebar-target="list">
+            <b></b>
+            <b></b>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </span>
+              <span class="title">Log out</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="calendar-container">
+        <%= month_calendar(events: @meetings, attribute: :start_time, end_attribute: :end_time) do |date, meetings| %>
+          <%= date %>
+          <% meetings.each do |meeting| %>
+            <div class="containerJS" data-controller="card" data-action="mouseover->card#hoverDelete mouseout->card#hoverDelete">
+              <%= link_to event_path(meeting) do %>
+                <div class="meeting">
+                  <p><%= meeting.name %><%#= link_to meeting.name, event_path(meeting) %></p>
+                  <small><%= meeting.time unless meeting.multi_days? %></small>
+                </div>
+              <% end %>
+              <span><%= link_to "+", event_path(meeting), method: :delete, data: { confirm: "Are you sure?", "card-target"=>"delete"}, class: "card-remove-link"%></span>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
