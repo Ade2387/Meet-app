@@ -101,6 +101,9 @@
 .card-show #links {
 align-content: left !important;
 display: flex;
+justify-content: space-around;
+margin: 0 !important;
+padding: 0 !important;
 }
 .card-show li {
   list-style: none;
@@ -108,7 +111,7 @@ display: flex;
 }
 .card-show .icon {
   color: #3D75C1;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 // .card-container{
