@@ -10,7 +10,7 @@
       </div>
       <div class="text">
         <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-        <p><%= "My team: #{current_user.company}" %></p>
+        <p>My team: <%= link_to current_user.company, events_path %></p>
       </div>
       <ul>
         <li class="list" data-sidebar-target="list">
