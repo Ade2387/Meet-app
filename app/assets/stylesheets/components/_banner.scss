@@ -174,7 +174,7 @@
 display: flex;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .top-container, .bottom-container {
     flex-direction: column;
   }
@@ -183,8 +183,34 @@ display: flex;
     grid-template-columns: 1fr;
   }
 
+  .banner-content {
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+
+  .top-container img {
+    height: 100%;
+  }
+
+  .instruction-heading {
+    padding: 0px 5px 0px 5px;
+    font-size: 46px;
+  }
+
   .info-2{
     grid-column: 1;
   }
 
+  .info-1 p {
+    font-size: 20px;
+  }
+
+  .info-2 p {
+    font-size: 20px;
+  }
+
+  .bottom-container p {
+      max-width: 160px;
+      height: 140px;
+  }
 }
