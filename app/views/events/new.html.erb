@@ -67,7 +67,7 @@
                 <%= f.input :start_time, as: :string, label: "Start", input_html: { id: "start_date", data: { 'date-target' => 'start' } } %>
                 <%= f.input :end_time, as: :string, label: "End", input_html: { id: "end_date", data: { 'date-target' => 'end' }} %>
                 <%= f.input :users, label: "Invitees", collection: @employees, label_method: :first_name, :as => :check_boxes, include_hidden: false %>
-                <%= f.submit "Create meeting", class: 'create-event-btn' %>
+                <%= f.submit "Create meeting", class: 'create-meeting-btn' %>
               </div>
             <% end %>
           </div>
