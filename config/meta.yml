@@ -1,4 +1,4 @@
 meta_product_name: "Meet"
 meta_title: "Meet - Meetings were never easier"
 meta_description: "Meet is a website platform facilitating the creation of meetings between professionals and private. Meet uses an algortihm to compare mutual calendars of parties to find the best dates for your futur meetings. Meet enables you to schedule your team meetings in a couple of clicks. Meet will automatically compare everyone calendar to find free spots for a meeting. "
-meta_image: "logo.png" # should exist in `app/assets/images/`
+meta_image: "meeting.png" # should exist in `app/assets/images/`
