@@ -182,6 +182,9 @@ display: flex;
   .bottom-container {
     grid-template-columns: 1fr;
     flex-wrap: wrap;
+    width: 80%;
+    margin: 0;
+    align-self: center;
   }
 
   .banner-content {
