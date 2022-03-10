@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   # dashboard_path(current_user) # your path
 end
 
-
 def default_url_options
   { host: ENV["DOMAIN"] || "localhost:3000" }
 end
